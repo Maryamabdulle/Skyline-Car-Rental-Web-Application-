@@ -31,7 +31,7 @@
 // .then(responseData=>{
 // api url
 const api_url = 
-"https://www.avis.com/webapi/locations/suggestions/mesa/en_US"
+
   
 // Defining async function
 async function getapi(url) {
