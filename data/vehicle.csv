@@ -1,0 +1,14 @@
+vehicle_type,vehicle_name,category,seats,doors,Transmission,large_bag,small_bag,ac,mpg,per_day_charges,car_img
+Economy,Ford Fiesta,Small to Full Size,5 Seats,4 Doors ,Automatic  Transmission,1 Large Bag,1 Small Bag,A/C,27/35 27-35 mpg,$145,Ford_Fiesta.png
+Compact,Kia Soul,Small to Full Size,5 Seats,4 Doors,Automatcic Transmission,1 Large Bag,2 Small Bag,A/C,25-29 mpg,$151,Kia _Soul.png
+Intermediate ,Toyota Corolla,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,29-35 mpg,$156,Toyota _Corolla.png
+Standard,Volkswagen Jetta,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,24-35 mpg,$173,Volkswagen_Jetta.png
+Full Size,Toyota Camry,Small to Full Size,5 Seats,4 Doors,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,22-30 mpg,$175,Toyota _Camry .png
+Intermediate SUV,Mazda CX-5,SVU,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,1 Small Bag,A/C,27/35 27-35 mpg,$189,Mazda_CX-5.png
+Standard SUV,Ford Edge,SUV,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,2 Small Bag,A/C,15-22 mpg,204,Ford _Edge.png
+Premium,Volkswagen Passat,Luxury & Convertibles,5 Seats,4 Doors,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,18-29 mpg,$198,Volkswagen_ Passat .png
+Convertible,Ford Mustang Convertible,Luxury & Convertibles,4 Seats ,2 Doors,Automatic Transmission,1 Large Bag,1 Small Bag,A/C,19-24 mpg,$223,Ford _Mustang Convertible.png
+Luxury,Chrysler 300,Luxury & Convertibles,5 Seats,4 Doors ,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,18-21 mpg,$215,Chrysler _300.png
+
+
+

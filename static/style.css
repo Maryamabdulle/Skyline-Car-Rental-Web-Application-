@@ -1,0 +1,289 @@
+.card-img-top{
+    width:100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+img{
+    width:100%;
+    height: auto;
+}
+
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width-width:768px){
+    .card-img-top{
+        width:100%;
+        height: 65vw;
+        object-fit:cover;
+}
+
+    img{
+        width:100%;
+    }  
+    .container{
+        max: width 100%;
+        width: 100%;
+    }
+    }
+
+    .container-fluid{
+        padding-left:0rem;
+        padding-right:0rem;
+        overflow:hidden;
+    }
+
+    .background-image-profile-container{
+        background-image: url ("https://i.pinimg.com/originals/8c/3e/f7/8c3ef7874e6438069954f427c28640f6.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:center;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+
+    .background-image-homepage-container{
+        background-image: url ("/static/back_img/homepage.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:center;
+        min-height: 1000vh;
+        min-width: 100vw;
+    }
+
+    .background-image-allcars-container{
+        background-image: url ("/static/back_img/homepage.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:center;
+        min-height: 100vh;
+        min-width: 100vw;
+    }
+
+    .background-image-cardetail-container{
+        background-image: url ("/static/back_img/cardetails/");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:center;
+        min-height: 10vh;
+        min-width: 10vw;
+    }
+
+
+    #background-video{
+        height: 100vh;
+        width: 100vw;
+        object-fit:cover;
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index: -1;
+    }
+    
+    #signup-video{
+        height: 100vh;
+        width: 100vw;
+        object-fit:cover;
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index: -1;
+    }
+
+    .login-container{
+       background-color: white;
+       padding:25px;
+       border: 2px solid #d3d3d3;
+       border-radius: 25px;
+       margin-top:90px;
+    }
+
+    .login-container-two{
+        background-color: white;
+       padding:25px;
+       border: 2px solid #d3d3d3;
+       border-radius: 25px;
+       margin-top: 100px;
+    }
+
+    .login-img{
+        width: 40px;
+        height: auto;
+    }
+
+
+   
+
+
+.btn-submit-three{
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: rgb(156, 182, 133);
+    color: white;
+    border-radius: 4px;
+    width: 205px;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    border: midnightblue;
+    -webkit-transition: 0.2s all;
+}
+
+.col-lg-5{
+    margin-top: 35px;
+    font-family: sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    background-color: #eeee;
+}
+
+    .div-center{
+        width: 400px;
+        height: 400px;
+        background-color:#fff;
+        position: absolute;
+        left: 0;
+        right:0;
+        top:0;
+        bottom:0;
+        margin: auto;
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+        padding: 1em 2em;
+        border-bottom:2px solid #ccc;
+        display: table;
+    }
+    div.content{
+        display: table-cell;
+        vertical-align:middle;
+    }
+
+    .backgroun{
+        background-image: url("/static/back_img/vehicle.png");
+        width: 100%;
+        position: absolute;
+        top:0;
+        bottom: 0;
+    }
+
+    #favorite {
+        color: rgb(247, 213, 213);
+        cursor: pointer;
+    }
+
+    .title{
+        color: grey;
+        font-size: 18px;
+    }
+    button{
+        border: none;
+        outline:0;
+        display: inline-block;
+        padding:8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+
+
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#website-name{
+    font-family: 'Smooch' , cursive;
+    font-size: xx-large;
+    color: rgb (8,8,8)}
+
+p { font-family: 'Crimson Pro' , serif;
+    font-size: large; }
+
+h1, h2, h4, h5, h6 {
+    font-family: 'Libre Baskerville' , serif;
+   font-weight: 700;
+    color: rgb (12, 95, 49)
+}
+
+h3 {
+    font-family: 'Smooch',  cursive;
+    font-weight: 40px;
+     color: rgb (2, 15, 8)
+}
+
+#cardetails{
+    font-family: 'Smooch',  cursive;
+    font-weight: 40px;
+     color: rgb (13, 95, 49)
+}
+.material-icons.md-18 {font-size: 18px;}
+
+.text-success {
+    font-size: 300;
+}
+
+#slogan{
+    font-family: 'Smooch',  cursive;
+    font-weight: 55px;
+     color: rgb (255, 255, 255)
+}
+
+#slogan2{
+    color: rgba(5,4,4,0.479)
+}
+

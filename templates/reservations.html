@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<body> 
+    {{pick_up_location}} {{drop_of_location}} {{pick_up_date}}{{drop_of_date}} {{pick_up_time}}{{drop_of_time}}
+
+    <div class="main-agileits">
+        <h2 class="sub-head">Book A Car Now!</h2
+            <div class="sub-main">
+                
+                <form action="/trip" method= "POST">
+        <div class="main-agileits">
+                            <select id="car" name="route" onchange="change_country(this.value)" class="from-field required select">
+                                <option value="1">Select Car </option>
+                                <option value="2">Ford Fiesta </option>
+                                <option value="3">Kia Soul </option>
+                                <option value="4">Toyota Corolla </option>
+                                <option value="5">Volkswagen Jetta </option>
+                                <option value="6">Toyota Camry </option>
+                                <option value="7">Mazda CX-5 </option>
+                                <option value="8">Ford Edge </option>
+                                <option value="9">Volkswagen Passat </option>
+                                <option value="10">Ford Mustang Convertible </option>
+                                <option value="11">Chrysler </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="main-agileits">
+                <div class="sub-main">
+                    <select id="car" name="route" onchange="change_country(this.value)" class="from-field required select">
+                        <option value="1">2640 East Indian School Road, NA, Phoenix, AZ, 85016, US
+                        </option>
+                        <option value="2"> 1412 North Scottsdale Road, (at Weber Rd), Tempe, AZ, 85281, US
+                        </option>
+                        <option value="3"> 5102 West Latham Street, NA, Phoenix, AZ, 85043, US
+                        </option>
+                        <option value="4"> 5401 North Scottsdale Road, NA, Scottsdale, AZ, 85250, US
+                        </option>
+                        <option value="5">3855 West Ray Road - Suite 1, (at McClintock Drive), Chandler, AZ, 85226, US
+                        </option>
+                        <option value="6">529 South Country Club Drive, NA, Mesa, AZ, 85210, US
+                        </option>
+                        <option value="7">1401 North Arizona Avenue, NA, Chandler, AZ, 85225, US
+                        </option>
+                        <option value="8">8752 East Shea Boulevard - Suite 132, (at Pima Freeway), Scottsdale, AZ, 85260, US
+                        </option>
+                        <option value="9">245 East Bell Road - Suite 24, NA, Phoenix, AZ, 85022, US
+                        </option>
+                        <option value="10">1401 North Arizona Avenue , Chandler, AZ, 85225
+                        </option>
+                        <option value="11">2860 South Alma School Road - Suite 34, Chandler, AZ-85286
+                        </option>
+                        <option value="12">6650 East Superstition Springs Boulevard, Mesa, AZ-85206
+                        </option>
+                        <option value="13">1805 East Sky Harbor Circle South Phoenix AZ-85034
+                        </option>
+                        <option value="14">6322 East Superstition Springs Boulevard,  Mesa, AZ-85206
+                        </option>
+                        <option value="15">8969 East Talking Stick Way - Suite C-7, Scottsdale, AZ, 85250, US
+                        </option>
+                    </select>
+                </div>
+            </div>
+        
+                         
+        <br/>
+
+
+        <input type="text" name="pick_up_location" placeholder="Pick-up Location" id="pickup" required="">
+        <br/>
+        <br/>
+        <input type="text" name="drop_of_location" placeholder="Drop-off Location" id="dropoff" required="">
+        <br/>
+        <br/>
+    <!---Dates-->
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="start-date"
+                    value="2022-11-9"
+                    min="2022-01-01"  max="2023 12-29">
+        <br/>
+        <br/>
+            <label for="end">End date:</label>
+            <input type="date" id="end" name="end-date"
+                    value="2022-11-9"
+                    min="2022-01-01"  max="2023 12-29">
+        <br/>
+        <br/>
+    <!---Times-->
+        <label for="apt">Choose a time for car pick up:</label>
+    
+        <input type="time" id="appt" name="pickup-time"
+            min="09:00" max="19:00" required>
+
+        <br/>
+        <br/>
+        <label for="apt">Choose a time for car drop off:</label>
+
+        <input type="time" id="appt" name="dropoff-time"
+            min="09:00" max="19:00" required>
+        <br/>
+        <br/>
+
+        <small> Pick up and drop off hours are 9am-7pm</small>
+        <br/>
+        <br/>
+        <input type="submit" value="BOOK NOW">
+    </form>
+    <div class="clear"></div>
+</body>
+</html>
+
+    
+    
+    
+
+
+
+
+
+
+    <!--<label for="Residency_field">Residency:</label>
+    <select id= "Residency_field" name=" residency_value">
+            <option value="US">United States</option>
+            <option value="other">Other/option>
+    </select>
+    <br/>
+    <br/>
+    <label for="age_field"> Age:</label> 
+    <select id= "age_field" name=" age_value">
+            <option value= "18-20">18-20</option>
+            <option value= "21-25">21-25</option>
+            <option value= "26-35">26-35</option>
+            <option value= "36-50">36-50</option>
+            <option value= "51-65">51-65</option>
+            <option value= "over65">Over 65</option>
+    </select>
+<!--<fieldset>
+    <br/>
+    </fieldset>
+            <legend>Perferred Vehicle Types</legend>
+            <input type="radio" name="preferred_vehicle_types" value="small_to_full_size"/>Small to Full Size <br/>
+            <input type="radio" name="preferred_vehicle_types" value="suvs"/>SUVs <br/>
+            <input type="radio" name="preferred_vehicle_types" value="luxury_&_convertibles"/>Luxury & Convertibles <br/>
+    </fieldset>
+    <br/>
+
+
+
+
+
+
+
+
+
+
+
+

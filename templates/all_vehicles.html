@@ -1,0 +1,43 @@
+
+</nav>
+<!------------------------------------------>
+<div class="container mt-4">
+	<h1 style="color:#3d4739;">Different Tpes of Cars</h1>
+  <div class="row">
+		{% for car in cars %}
+			<div class="col-lg-3 col-md-7 col-sm-12 col-xs-12 pb-4">
+				<div class="card shadow-sm">
+          <style>
+            p {text-align: center}
+            </style>
+					<img src="/static/img/{{ car.car_img }}" class="bd-placeholder-img card-img-top" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+					<p class="card-text"><b>{{ car.vehicle_name }} </b></p>
+          <p class="card-text">{{ car.vehicle_type }}</p>
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<a href="/cars/{{ car.car_id }}">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<br>
+								
+								</a>
+							</div>
+							<div class="btn-group">
+								{% if session.get('fname') %}
+										<button type="button" id="{{car.car_id}}" class= "btn btn-sm btn-outline-dark fav-button"> <span class="material-icons">
+												</span></button>
+										{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+  </div>
+</div> 
+
+
+{% block body %}{% endblock %}
+
+{% block after_body %}{% endblock %}

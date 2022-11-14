@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} {{user.fname}}'s Profile {% endblock %}
+{% block body %}
+
+
+<body class="backgound-image-profile-container">
+<div class ="container mt-4">
+    
+        <h3 class="text-center"> Favorite Cars</h3>
+
+
+
+    <div class = "row">
+        {% for fav_car in favorite_cars %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pb-4">
+                            <div class="card shadow-sm">
+                <img src="{{fav_car.car.imge_url}}" class="bd-placeholder-img card-img-top" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                {{fav_car.car.name}}
+                <div class = "card-body"> 
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="btn-group">
+                        <a href="/cars/{{fav_car.car.id}}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"> view</button>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            {% endfor %}
+        </div>
+      
+    </div>
+    </div>
+    </body> 
+        
+    {% endblock %}

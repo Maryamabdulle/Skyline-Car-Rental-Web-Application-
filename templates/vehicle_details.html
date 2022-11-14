@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ car.vehicle_name }} - Details {% endblock %}
+
+{% block body %}
+
+<body class="background-image-teadetail-container" > 
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col"> 
+        <img src="/static/img/{{ car.car_img }}">
+      </div>
+    <div class="col">
+      <div class="row">
+        <h2 class="text-center">
+          {{ car.vehicle_name }}
+        </h2>
+        <h3 id="cardetail"> 
+            Vehicle Type:
+        </h3>
+          <p>
+          {{ car.vehicle_type}}
+          </p>
+        <h3 id="cardetail">  
+            Category: 
+        </h3>
+        <p>  
+          {{ car.category }} 
+        </p>
+        <h3 id="cardetail">  
+            Doors:
+        </h3>
+        <p>  
+          {{ car.doors  }} 
+        </p>
+        <h3 id="cardetail">  
+            Large Bag: 
+        </h3>
+        <p>  
+          {{ car.large_bag   }} 
+        </p>
+        <h3 id="cardetail">  
+            Small Bag: 
+        </h3>
+        <p>  
+          {{ car.small_bag }} 
+        </p>
+        <h3 id="cardetail">  
+            AC: 
+        </h3>
+        <p>  
+          {{ car.ac }} 
+        </p>
+        <h3 id="cardetail">  
+            Transmission: 
+        </h3>
+        <p>  
+          {{ car.Transmission }} 
+        </p>
+        <h3 id="cardetail">  
+            mpg: 
+        </h3>
+        <p>  
+          {{ car.mpg }} 
+        </p>
+        <h3 id="cardetail">  
+            Price Per Day:
+        </h3>
+        <p>  
+          {{ car.per_day_charges  }} 
+        </p>
+        <h3 id="cardetail">  
+            Seat: 
+        </h3>
+        <p>  
+          {{ car.seats }} 
+        </p>
+        
+      <div class="btn-group">
+        {% if session.get('fname') %}  
+          <button type="button" id ="{{car.car_id}}" class="btn btn-outline-dark fav-button" >
+             <span class="material-icons"> 
+              </span>
+          </button>
+        {% endif %}
+      </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</body>
+{% endblock %}
