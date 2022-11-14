@@ -131,7 +131,7 @@ def show_car(car_id):
 access=os.environ["access_token"]
 
 avis=os.environ("/avis_token")
-avis_url="https://www.avis.com/webapi/locations/suggestions/mesa/en_US"
+#avis_url=
 
 #@app.route("/access/", methods=["POST"])
 
