@@ -8,6 +8,7 @@ import os
 
 
 
+
 app = Flask(__name__)
 app.secret_key = 'dev'
 app.jinja_env.undefined = StrictUndefined
@@ -127,7 +128,18 @@ def show_car(car_id):
     return render_template("vehicle_details.html", cars=cars , car=car)
 
 #-----------------------------BOOKING PAGE---------------
-#@app.route('/api/trip/',methods= ["POST"])
+access=os.environ["access_token"]
+
+avis=os.environ("/avis_token")
+avis_url="https://www.avis.com/webapi/locations/suggestions/mesa/en_US"
+
+#@app.route("/access/", methods=["POST"])
+
+
+@app.route("/access")
+def send_api_token():
+    "sends api token."
+    return access
 
 
 
@@ -141,12 +153,7 @@ def car_reservation():
     pick_up_time= request.form.get("pick_up_time")
     drop_of_time= request.form.get("drop_of_time")
 
-    # pick_up_location= "Tempe"
-    # drop_of_location=  "Mesa"
-    # pick_up_date= "1111"
-    # drop_of_date= "123342"
-    # pick_up_time= "123"
-    # drop_of_time= "1234"
+
     
  #list1
     return render_template("reservations.html", pick_up_location=pick_up_location,drop_of_location= drop_of_location,  pick_up_date= pick_up_date,drop_of_date= drop_of_date, pick_up_time= pick_up_time, drop_of_time=drop_of_time )
