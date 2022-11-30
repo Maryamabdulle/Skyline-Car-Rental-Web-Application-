@@ -1,45 +1,44 @@
 {% extends 'base.html' %}
-{% block title %} Login () {% endblock %}
 
+{% block title %}Trip{% endblock %}
 
 {% block body %}
-
-
-<!--LOGIN-->
-
-<div class="container top-margin">
-    <h1 class="Welcome"> <div id= "welcome">Skyline Car Rental </div></h1>
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <div class="login-container">
-                <img class="login-img centered-img heading-margin" src="/static/back_img/vehicle.png">
-                <h2 class="login">Log In</h2>
-            <form action="/login"method= "POST">
-                <div class="mb-3">
-                    <label for="inputfname" class="form-label" style= "color:#8d9aa5">Enter First Name</label>
-                        <input type="fname" name="fname" class= "form-control" id="fname">
+<style>
+	form.hide-submit input[type="submit"] { display: none;}
+	form.hide-submit label:hover {cursor: pointer;}
+</style>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+          <div class="login-container mt-0 mx-auto">
+              <div class="d-flex justify-content-center">
+                <img class="login-img centered-img heading-margin" src="/static/img/profile.jpg">
+              </div>
+              <h2 class="login">Log In</h2>
+          <form action="/login"method= "POST">
+              <div class="mb-3">
+                  <label for="inputfname" class="form-label" style= "color:#8d9aa5">Enter First Name</label>
+                      <input type="fname" name="fname" class= "form-control" id="fname">
+              </div>
+              <div class="mb-3">
+                  <label for="inputEmail" class="form-label" style= "color:#8d9aa5">Email address</label>
+                      <input type="email" name="email" class= "form-control" id="email">
+              </div>
+              <div class="mb-3">
+                  <label for="inputpassword" class="form-label" style= "color:#8d9aa5">Password</label>
+                      <input type="password" name="password" class= "form-control" id="password">
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center w-100">
+                <button class="btn btn-success" style="font-size: 19px">Login</button>
+                <div class="mt-2">
+                  <a class="dropdown-item" style="color:#8d9aa5" href="/register"> No account! </a>
                 </div>
-                <div class="mb-3">
-                    <label for="inputEmail" class="form-label" style= "color:#8d9aa5">Email address</label>
-                        <input type="email" name="email" class= "form-control" id="email">
-                </div>
-                <div class="mb-3">
-                    <label for="inputpassword" class="form-label" style= "color:#8d9aa5">Password</label>
-                        <input type="password" name="password" class= "form-control" id="password">
-                </div>
-                <button class="btn-submit-three">submit</button>
-                <a class="dropdown-item" style="color:#8d9aa5" href="/register"> No account! </a>
-            </form>
-        </div>
-    </div>
+              </div>
+          </form>
+      </div>
+  </div>
 <div class= "col-lg-4"></div>
 </div>
-<!--/container-->
-{% endblock %}
-
-
-
-
-    
-   
+</div>
+{% endblock body %}

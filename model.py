@@ -3,6 +3,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -11,8 +12,11 @@ class User(db.Model):
     __tablename__= "users"
     user_id = db.Column(db.Integer, primary_key= True,  autoincrement = True)
     fname = db.Column(db.String(25), nullable = False)
+    lname = db.Column(db.String(25), nullable = False)
     email = db.Column(db.String(100),nullable = False)
-    password= db.Column(db.String(30),nullable = False)
+    password= db.Column(db.String(),nullable = False)
+    address = db.Column(db.String(100), nullable = False)
+    contact = db.Column(db.String(30), nullable = False)
 
     #cars= db.relationship("Car",backref= "user")
     rates= db.relationship('Rate', backref= "users")
@@ -40,14 +44,17 @@ class Car(db.Model):
     per_day_charges= db.Column(db.String, nullable = False)
     category=db.Column(db.String, nullable = False)
     car_img= db.Column(db.String)
-    #status= 
+    
     #Added
     trips=db.relationship('Trip', backref= 'car')
+
+    def check_if_car_in_favorites(self):
+        return True if Favorite.query.filter_by(car_id=self.car_id).first() else False 
 
 
 # Method to identify ear car instance by car_id and vehicle_type
     def __repr__ (self):
-        return f"<Car car_id= {self.car_id},vehicle_type= {self.vehicle_type}>"
+        return f"<Car car_id= {self.car_id},vehicle_name= {self.vehicle_name}>"
 
 
 #Create SQLAlchemy relationship bettween cars and users
@@ -67,8 +74,16 @@ class Trip(db.Model):
     drop_of_date= db.Column(db.Date, nullable = False)
     pick_up_time= db.Column(db.DateTime, nullable = False)
     drop_of_time= db.Column(db.DateTime, nullable = False)
+    # boolean fields
+    is_active = db.Column(db.Boolean, nullable=False, default=True)
+    is_canceled = db.Column(db.Boolean, nullable=False, default=False)
+    is_return = db.Column(db.Boolean, nullable=False, default=False)
 
+    # relationship
+    booking=db.relationship('Booking', backref= 'trip', uselist=False)
 
+    # pick_up_date= db.Column(db.Date, nullable = False)
+    # drop_of_date= db.Column(db.Date, nullable = False)
 
 #Method to identidy each trips instance by trip_id, car_id, and user_id
     def __repr__ (self):
@@ -82,6 +97,23 @@ class Trip(db.Model):
         #return {"result": False, "reason": "This car has already been booked "}
 
 
+class Booking(db.Model):
+    """Booking cars"""
+    __tablename__ = "bookings"
+    booking_id = db.Column(db.Integer, primary_key= True,  autoincrement= True)
+    card_number = db.Column(db.String)
+    card_code = db.Column(db.Integer)
+    card_exp = db.Column(db.String)
+    is_canceled = db.Column(db.Boolean, default=False)
+    is_confirmed = db.Column(db.Boolean, default=False)
+
+    # foreignkey to trip
+    trip_id= db.Column(db.Integer, db.ForeignKey("trips.trip_id"), nullable=False)
+
+
+
+
+
 
 
 class Rate(db.Model):
@@ -89,16 +121,18 @@ class Rate(db.Model):
     __tablename__= "rates"
     rate_id= db.Column(db.Integer, primary_key= True,  autoincrement= True)
     score = db.Column(db.Integer)
-    feedback= db.Column(db.Text)
+    rate= db.Column(db.Text)
     trip_id= db.Column(db.Integer, db.ForeignKey("trips.trip_id"), nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     car_id= db.Column(db.Integer, db.ForeignKey("cars.car_id"), nullable=False)
 #Create SQLALchemy relationship between trips and rate
+    
     trip= db.relationship("Trip",backref="rates")
-
+    #user_id= db.relationship('User', backref= "rates")
+    #car_id= db.db.relationship('Car', backref= "rates")
 
     def __repr__ (self):
-        return f'<Rate rate_id{self.rate_id} score={self.score}>'
+        return f"<Rate rate_id{self.rate_id} score={self.score}>"
  
 
 
@@ -114,6 +148,8 @@ class Favorite(db.Model):
 #Adding relationship
     car= db.relationship("Car", backref= "favorites")
     user= db.relationship("User", backref= "favorites")
+
+
 
 
     def __repr__ (self):
@@ -145,6 +181,7 @@ test_user= User(user_id=1,
             password= "testing",
             fname= "usertest")
 
+#test_user2= User(user_id=2, email= "abdulle@test.com", password= "1234", fname= "usertest")
 # Economy = Car(car_id=1,
 #            vehicle_name= "Ford Fiesta",
 #            vehicle_type= "Economy",

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+<style>
+	form.hide-submit input[type="submit"] { display: none;}
+	form.hide-submit label:hover {cursor: pointer;}
+</style>
+<div class="container" style="height:100%; min-height: 100vh;">
+	<div class="row">
+		{% if cars %}
+		{% for car in cars %}
+		<div class="col-md-9 mb-3">
+			<div class="car bg-white py-3" style="position: relative;">
+				<div class="row">
+					<div class="col-md-6">
+                        <a href="{{ url_for('show_car', car_id=car.car_id) }}">
+						<img src="{{ url_for('static', filename='img/'+car.car_img.strip()) }}"
+							alt=""
+							class="mx-auto d-block mt-1">
+                        </a>
+						<div style="font-size: 12px;" class="text-center">Category: <span>{{car.category}}</span></div>
+					</div>
+
+					<div class="col-md-6 text-left">
+                        {% with font_size="16px" %}
+						<div style="font-size: {{ font_size }};" class="mt-3"><span class="text-muted">Name:</span> <span>{{car.vehicle_name}}</span></div>
+						<div style="font-size: {{ font_size }};" class=""><span class="text-muted">Type:</span> <span>{{car.vehicle_type}}</span></div>
+						<div style="font-size: {{ font_size }};" class=""><span class="text-muted">MPG:</span> <span>{{car.mpg}}</span></div>
+                        <div style="font-size: {{ font_size }};" class=""><span class="text-muted">Air Bags:</span> <span>{{car.large_bag}}, {{car.small_bag}}</span></div>
+						<div style="font-size: {{ font_size }};" class=""><span class="text-muted">Charges/Day:</span> <span>{{car.per_day_charges}}</span></div>
+                        {% endwith %}
+                    </div>
+				</div>
+				<div class="fav" style="position: absolute; right: 15px; bottom: 8px">
+					{% if session.get('user_email') %}
+						<form action="{{ url_for('update_favorite', car_id=car.car_id) }}" method="POST" class="hide-submit">
+							<input type="hidden" name="page" value="fav">
+							<label >
+								<input type="submit">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+									</svg>
+							</label>
+						</form>
+					{% endif %}
+				</div>
+                <div class=" d-flex" style="position: absolute; right: 55px; bottom: 8px">
+                    <span class="badge bg-warning text-dark mx-1"
+                        style="font-size: 11px;">
+                        {{ car.seats }}
+                    </span>
+                    <span class="badge bg-warning text-dark"
+                        style="font-size: 11px;">
+                        {{ car.doors }}
+                    </span>
+                </div>
+				<div class="row">
+					<div class="col-md-7 d-flex">
+
+					</div>
+					<!-- <div class="col-md-5 d-flex">
+						<span class="badge bg-warning text-dark mx-1"
+							style="font-size: 11px;">
+							{{ car.seats }}
+						</span>
+						<span class="badge bg-warning text-dark"
+							style="font-size: 11px;">
+							{{ car.doors }}
+						</span>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		<div class="col-md-12">
+			<h5>No Favourite car yet</h5>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock body %}

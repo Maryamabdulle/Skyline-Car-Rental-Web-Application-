@@ -1,0 +1,17 @@
+vehicle_type,vehicle_name,category,seats,doors,Transmission,large_bag,small_bag,ac,mpg,per_day_charges,car_img
+Intermediate SUV,Mazda CX-5,SVU,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,1 Small Bag,A/C,27/35 27-35 mpg,$189,Mazda_CX-5.png
+Standard SUV,Ford Edge,SUV,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,2 Small Bag,A/C,15-22 mpg,204,Ford _Edge.png
+
+
+Standard SUV,Toyota 4Runner, SUVs, 5 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, 15-22 mpg,$102, Toyota 4Runner.png
+Standard Elite SUV, Chevrolet Traverse,  SUVs, 7 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, 15/20-15-20 mpg,$100, Chevrolet Traverse.png
+Premium SUV, Chevrolet Suburban,  SUVs, 7/8 Seats', 4 Doors, Automati Transmission , 3 Large Bag, 4 Small Bag, A/C, 16/21-16-21 mpg,$278, Chevrolet Suburban.png
+Compact SUV, Nissan Kicks, SUVs, 5 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 2 Small Bag, A/C, 16/21-16-21 mpg',$179, Nissan Kicks .png
+Full-Size SUV, Chevrolet Tahoe, SUVs, 7/8 Seats, 4 Doors, Automati Transmission , 4 Large Bag, 3 Small Bag, A/C, 16/21-16-21 mpg,$312, Chevrolet Tahoe.png
+Luxury SUV, Infiniti QX80, SUVs, 8 Seats', 4 Doors, Automati Transmission , 4 Large Bag', 2 Small Bag, A/C, 16/21-16-21 mpg,$260,Infiniti QX80 .png
+Premium Crossover SUV, Volkswagen Atlas, SUVs,  8 Seats, 4 Doors, Automati Transmission' , 4 Large Bag, 3 Small Bag, A/C, 15-22 mpg,$299, Volkswagen Atlas.png
+Full-Size SUV, Ford Expedition, SUVs,  7/8 Seats, 4 Doors, Automati Transmission' , 4 Large Bag, 3 Small Bag, A/C, 16/21-16-21 mpg,$299, Ford Expedition.png
+Standard Elite SUV, GMC Acadia, SUVs, 7 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 3 Small Bag, A/C, 15/20-15-20 mpg,$128, GMC Acadia.png
+Standard Elite SUV, Dodge Durango, SUVs,  8 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 3 Small Bag, A/C, 15-22 mpg,$292, Dodge Durango.png
+
+

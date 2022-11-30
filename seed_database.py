@@ -42,7 +42,32 @@ def create_cars():
             model.db.session.add(car)
     model.db.session.commit()
 
+
 create_cars()
+
+#model.db.session.add_all(cars_in_db)
+#mode.dbsession.commit()
+
+
+for n in range(10):
+
+    cars_in_db= Car.query.all()
+    email=f'user{n}@test.com'
+    password='test'
+
+    user=crud.create_user(email, password)
+    model.db.session.add(user)
+
+    model.db.session.commit()
+    for _ in range(10):
+        random_car=choice(cars_in_db)
+        score=randint(1,5)
+        feedback= "feedback here"
+
+        rate= crud.create_review(user, random_car, score, feedback)
+        model.db.session.add(rate)
+
+model.db.session.commit()
             
 
 

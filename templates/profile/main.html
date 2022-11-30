@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+
+  {% include('partials/_rating_modal.html') %}
+    <!-- main container -->
+    <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-12 mb-2">
+            <h5 class="text-capitalize">Welcome {{ user.fname }} {{ user.lname }}</h5>
+          </div>
+          <div class="col-md-3">
+            <div class="mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-capitalize text-muted">Basic Info</h4>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <img class="w-25" src="{{ url_for('static', filename='img/profile.jpg') }}" alt="">
+                        </div>
+                    </div>
+                    <h5 class=""><span class="text-secondary">Email:</span> {{ user.email }}</h5>
+                    <h5><span class="text-secondary">Address:</span> {{ user.address }}</h5>
+                    <h5><span class="text-secondary">Contact:</span> {{ user.contact }}</h5>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                    <h4 class="text-capitalize text-muted">Trip Info</h4>
+                    <div class="row">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                  Current Trips
+                                </button>
+                              </h2>
+                              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="col-md-12">
+                                        {% include 'partials/_trip_table.html' %}
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                  Past Trips
+                                </button>
+                              </h2>
+                              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="col-md-12">
+                                        {% include('partials/_past_trips.html') %}
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                  Future Trips
+                                </button>
+                              </h2>
+                              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="col-md-12">
+                                      {% include('partials/_future_trips.html') %}
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+
+
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+  
+  $('.returnModalBtn').on('click', function(){
+    const tripID = $(this).data('tripid');
+    const carID = $(this).data('carid');
+
+    $('#trip_id').val(tripID);
+    $('#trip_id_again').val(tripID);
+
+    $('#car_id').val(carID);
+    $('#car_id_again').val(carID);
+
+    console.log(tripID, carID);
+    $(this).show();
+  });
+  
+});    
+</script>
+{% endblock %}
+
+{% block after_body %}
+
+{% endblock %}

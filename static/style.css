@@ -23,7 +23,7 @@ img{
 
     img{
         width:100%;
-    }  
+    }
     .container{
         max: width 100%;
         width: 100%;
@@ -84,7 +84,7 @@ img{
         bottom:0;
         z-index: -1;
     }
-    
+
     #signup-video{
         height: 100vh;
         width: 100vw;
@@ -114,12 +114,12 @@ img{
     }
 
     .login-img{
-        width: 40px;
+        width: 80px;
         height: auto;
     }
 
 
-   
+
 
 
 .btn-submit-three{
@@ -215,7 +215,7 @@ body {
 
 
 }
-    
+
 
 
 
@@ -286,4 +286,3 @@ h3 {
 #slogan2{
     color: rgba(5,4,4,0.479)
 }
-

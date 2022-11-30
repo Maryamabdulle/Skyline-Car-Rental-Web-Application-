@@ -1,0 +1,44 @@
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Car</th>
+        <th scope="col">Pickup Location</th>
+        <th scope="col">Dropoff Location</th>
+        <th scope="col">Pickup Date</th>
+        <th scope="col">Pickoff Date</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trip in active_trips %}
+        <tr>
+            <td>{{ trip.car.vehicle_name }}</td>
+            <td>{{ trip.pick_up_location }}</td>
+            <td>{{ trip.drop_of_location }}</td>
+            <td>{{ trip.pick_up_date }}</td>
+            <td>{{ trip.drop_of_date }}</td>
+            <td>
+                <div class="d-flex">
+                    {% if not trip.is_canceled %}
+                    <form action="{{ url_for('cancel_trip') }}" method="POST">
+                        <input type="hidden" name="trip_id" value="{{ trip.trip_id }}">
+                        <button type="submit" class="btn btn-sm btn-danger">cancel</button>
+                    </form>
+                    {% else %}
+                    <button disabled class="btn btn-sm btn-danger disabled">cancel</button>
+                    {% endif %}
+                    <button 
+                        data-tripid="{{ trip.trip_id }}" 
+                        data-carid="{{ trip.car.car_id }}"
+                        class="btn btn-sm btn-success mx-1 returnModalBtn"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ratingModal">
+                            Return
+                    </button>
+                </div>
+            </td>
+        </tr>    
+        {% endfor %}
+    </tbody>
+</table>

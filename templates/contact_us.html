@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Skyline Rental | Contact{% endblock %}
+
+{% block body %}
+<style>
+</style>
+<div class="container" style="height:100%; min-height: 100vh;">
+<div class="">
+  <div class="card">
+    <div class="card-body">
+      <h2>Contact Us</h2>
+      <br>
+      <form action="{{ url_for('handle_email') }}" class="w-50" action="" method="POST">
+
+        <div class="mb-3">
+          <label for="emai" class="form-label">Your Email</label>
+          <input type="email" name="email" class="form-control" id="email">
+        </div>
+
+          <div class="mb-3">
+              <label for="msg" class="form-label">Your Message</label>
+              <textarea name="msg" class="form-control" id="msg" rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success mx-1 w-25">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock body %}

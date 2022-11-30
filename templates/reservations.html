@@ -1,157 +1,573 @@
-<!DOCTYPE html>
-<body> 
-    {{pick_up_location}} {{drop_of_location}} {{pick_up_date}}{{drop_of_date}} {{pick_up_time}}{{drop_of_time}}
+{% extends 'base.html' %}
 
-    <div class="main-agileits">
-        <h2 class="sub-head">Book A Car Now!</h2
-            <div class="sub-main">
-                
-                <form action="/trip" method= "POST">
-        <div class="main-agileits">
-                            <select id="car" name="route" onchange="change_country(this.value)" class="from-field required select">
-                                <option value="1">Select Car </option>
-                                <option value="2">Ford Fiesta </option>
-                                <option value="3">Kia Soul </option>
-                                <option value="4">Toyota Corolla </option>
-                                <option value="5">Volkswagen Jetta </option>
-                                <option value="6">Toyota Camry </option>
-                                <option value="7">Mazda CX-5 </option>
-                                <option value="8">Ford Edge </option>
-                                <option value="9">Volkswagen Passat </option>
-                                <option value="10">Ford Mustang Convertible </option>
-                                <option value="11">Chrysler </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            
-            <div class="main-agileits">
-                <div class="sub-main">
-                    <select id="car" name="route" onchange="change_country(this.value)" class="from-field required select">
-                        <option value="1">2640 East Indian School Road, NA, Phoenix, AZ, 85016, US
-                        </option>
-                        <option value="2"> 1412 North Scottsdale Road, (at Weber Rd), Tempe, AZ, 85281, US
-                        </option>
-                        <option value="3"> 5102 West Latham Street, NA, Phoenix, AZ, 85043, US
-                        </option>
-                        <option value="4"> 5401 North Scottsdale Road, NA, Scottsdale, AZ, 85250, US
-                        </option>
-                        <option value="5">3855 West Ray Road - Suite 1, (at McClintock Drive), Chandler, AZ, 85226, US
-                        </option>
-                        <option value="6">529 South Country Club Drive, NA, Mesa, AZ, 85210, US
-                        </option>
-                        <option value="7">1401 North Arizona Avenue, NA, Chandler, AZ, 85225, US
-                        </option>
-                        <option value="8">8752 East Shea Boulevard - Suite 132, (at Pima Freeway), Scottsdale, AZ, 85260, US
-                        </option>
-                        <option value="9">245 East Bell Road - Suite 24, NA, Phoenix, AZ, 85022, US
-                        </option>
-                        <option value="10">1401 North Arizona Avenue , Chandler, AZ, 85225
-                        </option>
-                        <option value="11">2860 South Alma School Road - Suite 34, Chandler, AZ-85286
-                        </option>
-                        <option value="12">6650 East Superstition Springs Boulevard, Mesa, AZ-85206
-                        </option>
-                        <option value="13">1805 East Sky Harbor Circle South Phoenix AZ-85034
-                        </option>
-                        <option value="14">6322 East Superstition Springs Boulevard,  Mesa, AZ-85206
-                        </option>
-                        <option value="15">8969 East Talking Stick Way - Suite C-7, Scottsdale, AZ, 85250, US
-                        </option>
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+  <style>
+    .hide{
+      display: none;
+    }
+  </style>
+
+    <!-- main container -->
+    <div class="container" style="height:100%; min-height: 100vh;">
+      <div class="mb-4">
+        <div class="d-flex flex-row w-75 mx-auto">
+          <button id="locationBtn" class="btn btn-secondary mx-1">Select Location</button>
+          <button id="carBtn" class="btn btn-secondary mx-1">Select Car</button>
+          <button id="dateBtn" class="btn btn-secondary mx-1">Select Dates</button>
+          <button id="paymentBtn" class="btn btn-secondary mx-1">Select Payment</button>
+        </div>
+      </div>
+
+      <!-- page 1 -->
+      <div class="row page1">
+          <!-- form side -->
+          <div class="col-md-5">
+              <!-- form div-->
+              <div class="form">
+
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Choose a pickup location</label>
+                    <select required onchange="formPickupField()" class="form-select" id="pickupLoc" name="pickLocation">
+                      <option selected disabled>---select---</option>
+                      {%for item in data1%}
+                      <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                      {% endfor %}
                     </select>
+                  </div>
+
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="locationCheckbox">
+                    <label class="form-check-label" for="locationCheckbox">
+                      same location for dropoff
+                    </label>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Choose a Drop off location</label>
+                    <select onchange="formDropoffField()" class="form-select" id="dropoffLoc" name="dropLocation">
+                      <option selected disabled>---select---</option>
+                      {%for item in data2%}
+                      <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <button id="submitLocation" type="button" class="btn btn-outline-success">Next</button>
+              </div><!-- /form div -->
+          </div> <!-- form side -->
+
+          <!-- map side -->
+          <div class="col-md-7">
+              <!-- <button onclick="initMap()" class="btn btn-danger">Reload map</button> -->
+              <div id="map" class=""style="width: 100%; height: 55vh;">
+
+              </div>
+          </div> <!-- map side -->
+      </div> <!-- /page1 -->
+
+
+      <!-- page 2  cars-->
+      <div class="row page2 hide">
+        {% for item in cars %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="{{ url_for('static', filename='img/') }}{{item.car_img.strip() or 'profile.jpg'}}" alt="">
                 </div>
+                <div class="col-md-8">
+                  <div>Name: {{ item.vehicle_name }}</div>
+                  <div>Type: {{ item.vehicle_type }}</div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      Seats: {{ item.seats.split()[0] }}
+                    </div>
+                    <div class="col-md-6">
+                      doors: {{ item.doors.split()[0] }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                      <button data-carppd="{{ item.per_day_charges }}" data-carname="{{ item.vehicle_name }}" data-carid="{{ item.car_id }}" class="selectCar btn btn-sm btn-outline-success">select</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        
-                         
-        <br/>
+          </div>
+        </div>
+        {% endfor %}
+    </div> <!-- /page2 -->
 
 
-        <input type="text" name="pick_up_location" placeholder="Pick-up Location" id="pickup" required="">
-        <br/>
-        <br/>
-        <input type="text" name="drop_of_location" placeholder="Drop-off Location" id="dropoff" required="">
-        <br/>
-        <br/>
-    <!---Dates-->
-        <label for="start">Start date:</label>
-        <input type="date" id="start" name="start-date"
-                    value="2022-11-9"
-                    min="2022-01-01"  max="2023 12-29">
-        <br/>
-        <br/>
-            <label for="end">End date:</label>
-            <input type="date" id="end" name="end-date"
-                    value="2022-11-9"
-                    min="2022-01-01"  max="2023 12-29">
-        <br/>
-        <br/>
-    <!---Times-->
-        <label for="apt">Choose a time for car pick up:</label>
-    
-        <input type="time" id="appt" name="pickup-time"
-            min="09:00" max="19:00" required>
+    <!-- page 3 -->
+    <div class="row page3 hide">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="w-50 mx-auto">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="pick-Date">Start Date</span>
+                <input type="date" id="pickDate" name="pick_up_date"
+                      value="2022-11-9"
+                      min="2022-01-01"  max="2023 12-29" class="form-control" required>
+              </div>
 
-        <br/>
-        <br/>
-        <label for="apt">Choose a time for car drop off:</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="drop-Date">End Date</span>
+                <input class="form-control" type="date" id="dropDate" name="drop_of_date"
+                      value="2022-11-9"
+                      min="2022-01-01"  max="2023 12-29" required>
+              </div>
 
-        <input type="time" id="appt" name="dropoff-time"
-            min="09:00" max="19:00" required>
-        <br/>
-        <br/>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="pick-Time">Choose time for car pickup</span>
+                <input class="form-control" type="time" id="pickTime" name="pick_up_time"
+              min="09:00" max="19:00" required>
+              </div>
 
-        <small> Pick up and drop off hours are 9am-7pm</small>
-        <br/>
-        <br/>
-        <input type="submit" value="BOOK NOW">
-    </form>
-    <div class="clear"></div>
-</body>
-</html>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="drop-Time">Choose time for car dropoff</span>
+                <input type="time" id="dropTime" name="drop_of_time"
+              min="09:00" max="19:00" class="form-control" required>
+              </div>
+              <button id="submitDatetime" type="button" class="btn btn-outline-success">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div> <!-- /page3 -->
 
-    
-    
-    
+  <!-- page 4 -->
+    <div class="row page4 hide">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row no-gutters">
+              <div class="col-md-5">
+                <div>
+                  <h5>Checkout Info</h5>
+
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="payLaterCheckbox">
+                    <label class="form-check-label" for="payLaterCheckbox">
+                      Pay Later
+                    </label>
+                  </div>
+
+                  <div class="card" style="height: 65vh;">
+                    <div class="card-body">
+
+                      <div id="cardInfo">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Card Number</span>
+                          <input type="number" id="cardNumber" name="cardNumber" placeholder="1111 2222 3333 4444"
+                                class="form-control" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Card Code</span>
+                          <input type="number" id="cardCode" name="cardCode" placeholder="123 i.e 3 digits"
+                                class="form-control" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Card Expire</span>
+                          <input type="text" id="cardExp" name="cardExp" placeholder="01/22"
+                                class="form-control" required>
+                        </div>
+                      </div>
+
+                      <button id="submitPayment" class="btn btn-outline-success">Next</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                  <div class="mx-auto">
+                      <h5>Booking Details</h5>
+                      <div class="card">
+                          <div class="card-body">
+                            <h5>Car: <span id="i-carName" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Pick Up Location: <span id="i-pickLoc" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Drop Off Location: <span id="i-dropLoc" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Pick Up Date/time: <span id="i-pickTime" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Drop Off Date/time: <span id="i-dropTime" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Day(s): <span id="i-days" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Charge/Day: <span id="i-chargeDays" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <br>
+                            <h5>Total Amount: <span id="i-amount" class="text-muted" style="font-size: 24px;"></span></h5>
+                          </div>
+                        </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /page4 -->
+
+    </div>
+
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="/static/js/maps.js"></script>
+<script
+async
+src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
+</script>
+
+<script>
+
+  $(document).ready(function(){
+
+    // set to empty
+    localStorage.setItem('booking', '');
+
+    // vars
+    let pageCount = 0;
+
+    // page buttons
+    const locationBtn = $('#locationBtn');
+    const carBtn = $('#carBtn');
+    const dateBtn = $('#dateBtn');
+    const payBtn = $('#paymentBtn');
+
+    // pages
+    const page1 = $('.page1');
+    const page2 = $('.page2');
+    const page3 = $('.page3');
+    const page4 = $('.page4');
+
+    // checkbox
+    const locationCheckbox = $('#locationCheckbox')
+
+    // submit btns
+    const submitLocation = $('#submitLocation');
+    const submitDatetime = $('#submitDatetime');
+    const submitPayment = $('#submitPayment');
+
+
+    // disable buttons
+    const allBtns = [locationBtn, carBtn, dateBtn, payBtn];
+    $.each(allBtns, function(index, item){
+      if (pageCount !== index){
+        item.prop('disabled', true);
+      }
+    });
+
+
+    // check for login
+    let isLogged = false;
+    $.ajax({
+      url: "{{ url_for('is_logged_in') }}",
+      type: "post",
+      data: {
+        'check': true,
+      },
+      error: function(resp){
+        isLogged = false;
+      },
+      success: function(){
+        isLogged = true;
+      }
+    });
+
+
+    // checkbox event
+    locationCheckbox.change(function() {
+      const pickupLocVal = $('#pickupLoc').val();
+      if(this.checked && pickupLocVal != null) {
+        $('#dropoffLoc').append( $('<option>', {value: pickupLocVal, text: pickupLocVal}).prop('selected', true) );
+        $('#dropoffLoc').change();
+        initMap();
+      }
+    });
+
+    //
+    locationBtn.on('click', function(){
+      // showPage(page1, locationBtn, 'hide', pageCount);
+      // hidePage(page2, carBtn, 'page2');
+      locationBtn.prop('disabled', false);
+      carBtn.prop('disabled', true);
+      page1.removeClass('hide');
+
+      page2.addClass('hide');
+      page3.addClass('hide');
+      dateBtn.prop('disabled', true);
+
+      page4.addClass('hide');
+      payBtn.prop('disabled', true);
+    });
+
+    dateBtn.on('click', function(){
+      page4.addClass('hide');
+      page3.removeClass('hide');
+      payBtn.prop('disabled', true);
+    });
+
+    //
+    carBtn.on('click', function(){
+      page3.addClass('hide');
+      page2.removeClass('hide');
+      dateBtn.prop('disabled', true);
+
+      page4.addClass('hide');
+      payBtn.prop('disabled', true);
+    });
+
+
+    // click event for location button
+    submitLocation.on('click', function(){
+
+      if(!isLogged){
+        alert('please login')
+        return false;
+      }
 
 
 
+      const pickupLocVal = $('#pickupLoc').val();
+      const dropoffLocVal = $('#dropoffLoc').val();
+
+      if (pickupLocVal == null || dropoffLocVal == null){
+        alert('please select both locations');
+        return false;
+      }
+
+      // add to localstorage ---> locations
+      let booking = {
+        step: 1,
+        pickLoc: pickupLocVal,
+        dropLoc: dropoffLocVal
+      }
+      localStorage.setItem('booking', JSON.stringify(booking));
+
+      // pageCount = 1;
+      // hidePage(page1, locationBtn, 'hide');
+      // showPage(page2, carBtn, 'page2', pageCount);
+
+      page1.addClass('hide');
+      page2.removeClass('hide');
+      carBtn.prop('disabled', false);
+
+
+      // ==========================
+      // select car
+      // ==========================
+
+      // on selecting a car
+      $('.selectCar').on('click', function(){
+        const carId = $(this).data('carid');
+        const carName = $(this).data('carname');
+        const carppd = $(this).data('carppd');
+
+
+        // get and set the updated booking
+        let booking = JSON.parse(localStorage.getItem('booking'));
+        booking['carId'] = carId;
+        booking['carName'] = carName;
+        booking['step'] = 2;
+        booking['carppd'] = carppd;
+        localStorage.setItem('booking', JSON.stringify(booking));
+
+        // goto datetime/ page3
+        page2.addClass('hide');
+        page3.removeClass('hide');
+        dateBtn.prop('disabled', false);
+      });
+
+    });
+
+
+    // ==========================
+    // click on datetiem submit/next button
+    // ==========================
+    submitDatetime.on('click', function(){
+      const pickDate = $('#pickDate').val();
+      const dropDate = $('#dropDate').val();
+      const pickTime = $('#pickTime').val();
+      const dropTime = $('#dropTime').val();
+
+      // if fields are null
+      if(pickDate == null || dropDate == null || pickTime == null || dropTime == null){
+        alert('please fill all fields');
+        return false;
+      }
+
+      // if fields are empty
+      if(pickDate.length < 1 || dropDate.length < 1 || pickTime.length < 1 || dropTime.length < 1){
+        alert('please fill all fields');
+        return false;
+      }
+
+      let booking = JSON.parse(localStorage.getItem('booking'));
+      console.log(booking);
+
+
+      // for date checking and validations
+      $.ajax({
+        url: "{{ url_for('validate_dates') }}",
+        type: "post",
+        data: {
+          'car_id': booking['carId'],
+          'pickDate': pickDate,
+          'dropDate': dropDate
+        },
+        error: function(resp, textStatus, errorThrown) {
+          if(resp.responseText == 'datePast'){
+            alert('booking dates should not be in the past dates');
+            return false;
+          }
+          if(resp.responseText == 'cmpDate'){
+            alert('pickup date cannot be greater than drop off date');
+            return false;
+          }
+
+          if(resp.responseText == 'bookedDate'){
+            alert('Dates already booked.');
+            return false;
+          }
+          alert('something went wrong please try again later');
+        },
+        complete: function(response){
+          console.log(response);
+          const msg = response.responseText.split(',')[0];
+          const days = response.responseText.split(',')[1];
+
+          if (msg == "okDate"){
+            // update booking
+            booking['pickDate'] = pickDate;
+            booking['dropDate'] = dropDate;
+            booking['pickTime'] = pickTime;
+            booking['dropTime'] = dropTime;
+            booking['days'] = days;
+            booking['step'] = 3
+
+            // save the updated booking
+            localStorage.setItem('booking', JSON.stringify(booking));
+
+            console.log(booking);
+
+            // populate booking info
+            $('#i-carName').html(booking['carName']);
+            $('#i-pickLoc').html(booking['pickLoc']);
+            $('#i-dropLoc').html(booking['dropLoc']);
+            $('#i-pickTime').html(booking['pickDate']);
+            $('#i-dropTime').html(booking['dropDate']);
+            $('#i-days').html(booking['days']);
+            $('#i-chargeDays').html(booking['carppd']);
+            $('#i-amount').html( '$'+ parseInt(booking['days']) * parseFloat(booking['carppd'].replace('$', 0)) )
+
+            // if everything worked
+            page3.addClass('hide');
+            page4.removeClass('hide');
+            payBtn.prop('disabled', false)
+
+          }
+        }
+      });
+    });
+
+    // paylater checkbox change
+    $('#payLaterCheckbox').change(function() {
+      let booking = JSON.parse(localStorage.getItem('booking'));
+
+      if(this.checked) {
+        booking['payLater'] = true;
+        // hide cardinfo
+        $('#cardInfo').addClass('hide');
+      }else{
+        booking['payLater'] = false;
+        $('#cardInfo').removeClass('hide');
+      }
+
+      localStorage.setItem('booking', JSON.stringify(booking));
+    });
+
+
+    // submit payment click
+    $('#submitPayment').on('click', function(){
+      const cardNumber = $('#cardNumber').val();
+      const cardCode = $('#cardCode').val();
+      const cardExp = $('#cardExp').val();
+
+      let booking = JSON.parse(localStorage.getItem('booking'));
+
+      if (booking['payLater'] == true){
+        booking['step'] = 4;
+        // go to next step
+      }else{
+
+        if (cardNumber == null || cardCode == null || cardExp == null){
+          return false;
+        }
+
+        if (cardNumber.length < 1 || cardCode.length < 1 || cardExp.length < 1){
+          return false;
+        }
+
+        booking['cardNumber'] = cardNumber;
+        booking['cardCode'] = cardCode;
+        booking['cardExp'] = cardExp;
+        booking['step'] = 4;
+      }
+
+      localStorage.setItem('booking', JSON.stringify(booking));
+
+      // ajax request to server for new trip/booking
+      $.ajax({
+        url: "{{ url_for('create_booking') }}",
+        type: 'POST',
+        data: {
+          'carId': booking['carId'],
+          'cardCode': booking['cardCode'],
+          'cardNumber': booking['cardNumber'],
+          'cardExp': booking['cardExp'],
+          'dropDate': booking['dropDate'],
+          'dropLoc': booking['dropLoc'],
+          'dropTime': booking['dropTime'],
+          'payLater': booking['payLater'],
+          'pickDate': booking['pickDate'],
+          'pickLoc': booking['pickLoc'],
+          'pickTime': booking['pickTime'],
+          'step': booking['step']
+        },
+        success: function(resp){
+
+        },
+        error: function(resp, textStatus, errorThrown){
+          if(resp.responseText == 'booked'){
+            alert('Already Booked');
+            return false;
+          }
+          alert('something went wrong please try again later');
+        },
+        complete: function(resp){
+          if (resp.responseText == 'ok'){
+            // show success message
+            alert('Booking Successful!');
+            window.location.href = "{{ url_for('show_user_profile') }}"
+          }
+        }
+      });
+
+    });
+
+    //
+
+
+  });
+</script>
 
 
 
-    <!--<label for="Residency_field">Residency:</label>
-    <select id= "Residency_field" name=" residency_value">
-            <option value="US">United States</option>
-            <option value="other">Other/option>
-    </select>
-    <br/>
-    <br/>
-    <label for="age_field"> Age:</label> 
-    <select id= "age_field" name=" age_value">
-            <option value= "18-20">18-20</option>
-            <option value= "21-25">21-25</option>
-            <option value= "26-35">26-35</option>
-            <option value= "36-50">36-50</option>
-            <option value= "51-65">51-65</option>
-            <option value= "over65">Over 65</option>
-    </select>
-<!--<fieldset>
-    <br/>
-    </fieldset>
-            <legend>Perferred Vehicle Types</legend>
-            <input type="radio" name="preferred_vehicle_types" value="small_to_full_size"/>Small to Full Size <br/>
-            <input type="radio" name="preferred_vehicle_types" value="suvs"/>SUVs <br/>
-            <input type="radio" name="preferred_vehicle_types" value="luxury_&_convertibles"/>Luxury & Convertibles <br/>
-    </fieldset>
-    <br/>
+{% endblock %}
 
+{% block after_body %}
 
-
-
-
-
-
-
-
-
-
-
+{% endblock %}

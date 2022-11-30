@@ -1,0 +1,45 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
+    Launch static backdrop modal
+  </button> -->
+  
+<!-- Modal -->
+<div class="modal fade" id="ratingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Rate This Trip</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="" style="position: relative;">
+            <form action="{{ url_for('return_vehicle') }}" method="POST">
+                <input type="hidden" id="trip_id" name="trip_id" value="">
+                <input type="hidden" id="car_id" name="car_id" value="">
+                <input type="hidden" id="trip_id" name="rating" value="true">
+                <select name="rate" class="form-select mb-3" aria-label=".form-select-lg example">
+                    <option selected disabled>---Rate---</option>
+                    <option value="5">5 star</option>
+                    <option value="4">4 star</option>
+                    <option value="3">3 star</option>
+                    <option value="2">2 star</option>
+                    <option value="1">1 star</option>
+                </select>
+                <div class="mb-3">
+                    <label for="ratingText" class="form-label">Write Review</label>
+                    <textarea name="review" class="form-control" id="ratingText" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success mx-1 w-25">Rate</button>
+            </form>
+            <div class="" style="position: absolute; bottom: 0px; left: 135px;">
+                <form action="{{ url_for('return_vehicle') }}" method="POST">
+                    <input type="hidden" id="car_id_again" name="car_id" value="">
+                    <input type="hidden" id="trip_id_again" name="trip_id" value="">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

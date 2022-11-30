@@ -1,0 +1,17 @@
+vehicle_type,vehicle_name,category,seats,doors,Transmission,large_bag,small_bag,ac,mpg,per_day_charges,car_img
+Economy,Ford Fiesta,Small to Full Size,5 Seats,4 Doors ,Automatic  Transmission,1 Large Bag,1 Small Bag,A/C,27/35 27-35 mpg,$145,Ford_Fiesta.png
+Compact,Kia Soul,Small to Full Size,5 Seats,4 Doors,Automatcic Transmission,1 Large Bag,2 Small Bag,A/C,25-29 mpg,$151,Kia _Soul.png
+Intermediate ,Toyota Corolla,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,29-35 mpg,$156,Toyota _Corolla.png
+Standard,Volkswagen Jetta,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,24-35 mpg,$173,Volkswagen_Jetta.png
+Full Size,Toyota Camry,Small to Full Size,5 Seats,4 Doors,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,22-30 mpg,$175,Toyota _Camry .png
+
+
+Full Size,Chevy Malibu, Small to Full Size, 5 Seats, 4 Doors, Automatic Transmission , 2 Large Bag , 1 Small Bag , A/C, 22-30 mpg, $125, Chevy Malibu.png
+Standard Elite, BMW 228i gran coupe, Small to Full Size  , 5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 24-35 mpg, $173, BMW 228i gran coupe.png
+Intermediate Electric Car, Nissan LEAF, Small to Full Size  ,  5 Seats, 4 Doors, 'Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 27/35 27-35 mpg,$112,Nissan LEAF.png
+Full-Size Hybrid Car , Ford Fusion Hybrid, Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 22-30 mpg,$122, Ford Fusion Hybrid.png
+Standard , Chevrolet Impala, Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 24-35 mpg, $157, Chevrolet Impala .png
+Standard Hybrid , Toyota Prius,Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 24-35 mpg,$129, Toyota Prius.png
+Compact, 'Nissan Versa , Small to Full Size,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag,A/C, 25-29 mpg, $111,Nissan Versa .png
+
+
