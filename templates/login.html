@@ -1,22 +1,51 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Skyline Rental | Login</title>
+    <!--Bootstrap CSS-->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <style media="screen">
+      .reg-card{
+        border: 1px solid rgba(0,0,0, 0.2);
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-{% block title %}Trip{% endblock %}
-
-{% block body %}
-<style>
-	form.hide-submit input[type="submit"] { display: none;}
-	form.hide-submit label:hover {cursor: pointer;}
-</style>
-<div class="container">
-  <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-          <div class="login-container mt-0 mx-auto">
-              <div class="d-flex justify-content-center">
-                <img class="login-img centered-img heading-margin" src="/static/img/profile.jpg">
+      video{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -999;
+        object-fit: cover;
+        -webkit-transform: scaleY(1.3);
+        -moz-transform: scaleY(1.3);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The video -->
+    <video id="signup-video" autoplay loop  muted>
+        <source src="/static/signin.mp4" type="video/mp4">
+    </video>
+    <div class="">
+      <div class="">
+        <div class="d-flex justify-content-center">
+          <div class="form p-4 reg-card mb-4" style="width: 35%; margin-top: 120px;">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+              <div class="">
+                <!-- <img class="login-img heading-margin" src="/static/img/profile.jpg" width="80"> -->
               </div>
-              <h2 class="login">Log In</h2>
-          <form action="/login"method= "POST">
+              <h2 class="register text-light">Login</h2>
+            </div>
+            <form action="/login"method= "POST">
               <div class="mb-3">
                   <label for="inputfname" class="form-label" style= "color:#8d9aa5">Enter First Name</label>
                       <input type="fname" name="fname" class= "form-control" id="fname">
@@ -36,9 +65,9 @@
                 </div>
               </div>
           </form>
+          </div>
+        </div>
       </div>
-  </div>
-<div class= "col-lg-4"></div>
-</div>
-</div>
-{% endblock body %}
+    </div>
+  </body>
+</html>

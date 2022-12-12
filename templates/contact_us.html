@@ -4,28 +4,39 @@
 
 {% block body %}
 <style>
+  .img-bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     background:linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url({{url_for('static', filename='img/Signuppage.png')}});
+  }
+
+  .cst-mg{
+    margin-top: 80px;
+  }
 </style>
-<div class="container" style="height:100%; min-height: 100vh;">
-<div class="">
-  <div class="card">
-    <div class="card-body">
-      <h2>Contact Us</h2>
-      <br>
-      <form action="{{ url_for('handle_email') }}" class="w-50" action="" method="POST">
-
-        <div class="mb-3">
-          <label for="emai" class="form-label">Your Email</label>
-          <input type="email" name="email" class="form-control" id="email">
+<div class="container-fluid img-bg" id="main">
+  <div class="container cst-mg" style="height:100%; min-height: 100vh;">
+    <div class="">
+      <div class="card w-75">
+        <div class="card-body">
+          <form action="{{ url_for('handle_email') }}" class="w-75 mx-auto" action="" method="POST">
+            <h2>Contact Us</h2>
+          <br>
+            <div class="mb-3">
+              <label for="emai" class="form-label">Your Email</label>
+              <input type="email" name="email" class="form-control" id="email">
+            </div>
+    
+              <div class="mb-3">
+                  <label for="msg" class="form-label">Your Message</label>
+                  <textarea name="msg" class="form-control" id="msg" rows="5"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success mx-1 w-25">Send Message</button>
+          </form>
         </div>
-
-          <div class="mb-3">
-              <label for="msg" class="form-label">Your Message</label>
-              <textarea name="msg" class="form-control" id="msg" rows="5"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success mx-1 w-25">Send Message</button>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+    </div>
 </div>
 {% endblock body %}

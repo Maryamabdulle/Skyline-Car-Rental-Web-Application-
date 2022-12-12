@@ -4,35 +4,30 @@
 
 {% block body %}
 
+<style>
+	form.hide-submit input[type="submit"] { display: none;}
+	form.hide-submit label:hover {cursor: pointer;}
+
+	/* .car-type{
+		font-size: 20px;
+		font-weight: 700;
+		font-family: serif;
+	} */
+
+	.cst-mg{
+		margin-top: 60px;
+	}
+</style>
+
 <body class="background-image-teadetail-container" > 
   <div class="container mt-4">
     <div class="row">
       <div class="col"> 
-        <img src="/static/img/{{ car.car_img }}">
-        <div class="mt-2">
-          <h5>Ratings</h5>
-          {% if ratings %}
-          {% for rate in ratings %}
-          <div class="card mt-1">
-            <div class="card-body">
-              <div class="stars d-flex ">
-                <div>
-                  {% for n in range(rate.score) %}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="orange" class="bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                  {% endfor %}
-                </div>
-              </div>
-              <div class="review">
-                {{ rate.rate }}
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-          {% else %}
-          <p>No rating available</p>
-          {% endif %}
+        <img src="/static/img/{{ car.car_img.strip() }}">
+        <div>
+          {% with pageName='details' %}
+            {% include 'partials/_favourite.form.html' %}
+          {% endwith %}  
         </div>
       </div>
     <div class="col">
@@ -100,18 +95,41 @@
         <p>  
           {{ car.seats }} 
         </p>
-        
-      <div class="btn-group">
-        {% if session.get('fname') %}  
-          <button type="button" id ="{{car.car_id}}" class="btn btn-outline-dark fav-button" >
-             <span class="material-icons"> 
-              </span>
-          </button>
-        {% endif %}
-      </div>
       </div>
 
     </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col">
+        <div class="mt-2">
+          {% if ratings %}
+          <h5>Ratings</h5>
+          {% for rate in ratings %}
+          <div class="mb-2">
+            <div>{{ rate.users.fname }} <small>{{ rate.created_at.date() }}</small></div>
+            <div class="card mt-1">
+              <div class="card-body">
+                <div class="stars d-flex ">
+                  <div>
+                    {% for n in range(rate.score) %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="orange" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="review">
+                  {{ rate.rate }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="col"></div>
     </div>
   </div>
 </body>

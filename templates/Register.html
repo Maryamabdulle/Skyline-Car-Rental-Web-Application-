@@ -1,93 +1,113 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Skyline Rental | Register</title>
-    <!--Bootstrap CSS-->
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <style media="screen">
-      .reg-card{
-        border: 1px solid rgba(0,0,0, 0.2);
-        border-radius: 8px;
-        background-color: rgba(0, 0, 0, 0.8);
-      }
+{% extends 'base.html' %}
 
-      video{
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -999;
-        object-fit: cover;
-        -webkit-transform: scaleY(1.3);
-        -moz-transform: scaleY(1.3);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- The video -->
-    <video id="signup-video" autoplay loop  muted>
-        <source src="/static/signin.mp4" type="video/mp4">
-    </video>
+{% block title %}Skyline Car Rental | Register{% endblock %}
+
+{% block body %}
+<style>
+	/* form.hide-submit input[type="submit"] { display: none;}
+	form.hide-submit label:hover {cursor: pointer;} */
+  .login-page{
+    margin-top: 80px;
+  }
+
+  .img-bg{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -9999;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: fill;
+    background-attachment: fixed;
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{url_for('static', filename='img/Signuppage.png')}});
+  }
+
+</style>
+<div class="img-bg">
+
+</div>
+<div class="container-fluid" id="main">
+  <div class="h-100" style="">
     <div class="">
-      <div class="">
-        <div class="d-flex justify-content-center">
-          <div class="form p-4 reg-card mt-4 mb-4" style="width: 35%;">
-            <div class="d-flex justify-content-center flex-column align-items-center">
-              <div class="">
-                <!-- <img class="login-img heading-margin" src="/static/img/profile.jpg" width="80"> -->
-              </div>
-              <h2 class="register text-light">Register</h2>
+      <div class="container login-page">
+        <div class="row">
+            <!-- <div class="col-lg-4"></div> -->
+            <div class="col-md-12 mx-auto">
+                <div class="login-container mt-0 mx-auto" style="width: 450px;">
+                    <div class="d-flex justify-content-center">
+                      <img class="login-img centered-img heading-margin" src="/static/img/profile.jpg">
+                    </div>
+                    <h2 class="login">Register</h2>
+                    <form action="/register"method= "POST">
+                      <div class="mb-3">
+                          <label for= "inputfname" class="form-label" style="color:#8d9aa5">First Name </label>
+                          <input type= "text" name= "fname" class="form-control" id="fname">
+                              <div id="fnameHelp" class="form-text"> Enter your first name. </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for= "inputlname" class="form-label" style="color:#8d9aa5">Last Name </label>
+                          <input type= "text" name= "lname" class="form-control" id="lname">
+                              <div id="fnameHelp" class="form-text"> Enter your Last name. </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for= "inpuEEmail" class="form-label" style="color:#8d9aa5">Email address</label>
+                              <input type= "email" name= "email" class="form-control"id="email">
+                                  <div id="emailHelp" class="form-text"> Enter a valid email address. </div>
+                      </div>
+
+                      <div class= "mb-3">
+                          <label for= "inputPassword" class="form-label" style="color:#8d9aa5">Password</label>
+                              <input type= "password" name= "password" class="form-control"id="password">
+                                  <div id="passwordHelp" class="form-text"> Password must be 8-10 characters long. </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for= "addr" class="form-label" style="color:#8d9aa5">Address </label>
+                          <input type= "text" name= "address" class="form-control" id="lname">
+                              <div id="fnameHelp" class="form-text"> Enter your Address. </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for= "contact" class="form-label" style="color:#8d9aa5">Contact/Phone </label>
+                          <input type= "text" name= "contact" class="form-control" id="lname">
+                              <div id="fnameHelp" class="form-text"> Enter your Phone. </div>
+                      </div>
+
+                      <button class="btn btn-secondary" type="submit">Register</button>
+
+                    </form>
+                <!-- <form action="/login"method= "POST">
+                    <div class="mb-3">
+                        <label for="inputfname" class="form-label" style= "color:#8d9aa5">Enter First Name</label>
+                            <input type="fname" name="fname" class= "form-control" id="fname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label" style= "color:#8d9aa5">Email address</label>
+                            <input type="email" name="email" class= "form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputpassword" class="form-label" style= "color:#8d9aa5">Password</label>
+                            <input type="password" name="password" class= "form-control" id="password">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center w-100">
+                      <button class="btn btn-success" style="font-size: 19px">Login</button>
+                      <div class="mt-2">
+                        <a class="dropdown-item" style="color:#8d9aa5" href="/register"> No account! </a>
+                      </div>
+                    </div>
+                </form> -->
             </div>
-            <form action="/register"method= "POST">
-              <div class="mb-3">
-                  <label for= "inputfname" class="form-label" style="color:#8d9aa5">First Name </label>
-                  <input type= "text" name= "fname" class="form-control" id="fname">
-                      <div id="fnameHelp" class="form-text"> Enter your first name. </div>
-              </div>
-
-              <div class="mb-3">
-                  <label for= "inputlname" class="form-label" style="color:#8d9aa5">Last Name </label>
-                  <input type= "text" name= "lname" class="form-control" id="lname">
-                      <div id="fnameHelp" class="form-text"> Enter your Last name. </div>
-              </div>
-
-              <div class="mb-3">
-                  <label for= "inpuEEmail" class="form-label" style="color:#8d9aa5">Email address</label>
-                      <input type= "email" name= "email" class="form-control"id="email">
-                          <div id="emailHelp" class="form-text"> Enter a valid email address. </div>
-              </div>
-
-              <div class= "mb-3">
-                  <label for= "inputPassword" class="form-label" style="color:#8d9aa5">Password</label>
-                      <input type= "password" name= "password" class="form-control"id="password">
-                          <div id="passwordHelp" class="form-text"> Password must be 8-10 characters long. </div>
-              </div>
-
-              <div class="mb-3">
-                  <label for= "addr" class="form-label" style="color:#8d9aa5">Address </label>
-                  <input type= "text" name= "address" class="form-control" id="lname">
-                      <div id="fnameHelp" class="form-text"> Enter your Address. </div>
-              </div>
-
-              <div class="mb-3">
-                  <label for= "contact" class="form-label" style="color:#8d9aa5">Contact/Phone </label>
-                  <input type= "text" name= "contact" class="form-control" id="lname">
-                      <div id="fnameHelp" class="form-text"> Enter your Phone. </div>
-              </div>
-
-              <button class="btn btn-secondary" type="submit">Register</button>
-
-            </form>
-          </div>
         </div>
+      <div class= "col-lg-4"></div>
+      </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+  <br><br><br><br><br>
+</div>
+
+{% endblock body %}

@@ -8,7 +8,7 @@ from flask import (Flask,
     redirect,
     jsonify,
     json,
-    url_for, Response)
+    url_for, Response, make_response)
 from model import connect_to_db, db, User, Trip, Rate, Favorite, Car, Booking
 import crud
 from jinja2 import StrictUndefined
@@ -16,8 +16,8 @@ import os
 import requests
 import hashlib
 
-from helper import convert_date, compare_dates, convert_datetime, check_card_expfrmt
-from datetime import datetime
+from helper import convert_date, get_mpg, compare_dates, convert_datetime, check_card_expfrmt
+from datetime import datetime, timedelta
 import random
 from flask_mail import Mail, Message
 
@@ -44,20 +44,39 @@ mail = Mail(app)
 # url=
 #request=requests.get(url)json()
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+
+@app.route('/test/route')
+def test_route():
+    return 'Welcome to'
+
 @app.route("/")
 def homepage():
     """View homepage."""
     cars = crud.get_cars()
 
-    carousal_cars = ['Tesla Model 3.png', 'Chevrolet Suburban.png', 'BMW 7-Series.png']
+    carousal_cars = ['homepage1.png', 'Tesla Model 3.png', '6home.png']
 
     suvs = Car.query.filter(Car.category.like('%SUV%')).all()[0:3]
     small_full_size = Car.query.filter(Car.category.like('%Small to Full Size%')).all()[0:3]
     luxury = Car.query.filter(Car.category.like('%Luxury & Convertibles%')).all()[0:3]
 
+    cars = suvs + small_full_size + luxury
 
-    print(carousal_cars)
+    fcars = []
+    if (cars):
+        for i in range(0, 5):
+            car = random.choice(cars)
+            if car not in fcars:
+                fcars.append(car)
+
     return render_template("homepage.html",
+                            fcars=fcars,
                             carousal_cars=carousal_cars,
                             suvs=suvs,
                             small_full_size=small_full_size,
@@ -90,7 +109,7 @@ def process_login():
         session["user_email"]= user.email
         session["fname"]= user.fname
         session["user_id"]= user.user_id
-        flash (f"Welcome back, {user.fname}")
+        flash (f"Welcome back, {user.fname}", 'success')
     return redirect ("/")
 
 
@@ -113,13 +132,13 @@ def signup_user():
 
     user= crud.get_user_by_email(email)
     if user:
-        flash("Cannot create an account with that email. Try again")
-        return redirect("/login")
+        flash("Cannot create an account with that email. Try again", 'error')
+        return redirect("/register")
 
     else:
         hash_password = hashlib.sha256(password.encode()).hexdigest()
         crud.create_user(fname, lname, email, hash_password, address, contact)
-        flash(f"Account created! Welcome{fname}.Please log in.")
+        flash(f"Account created! Welcome{fname}.Please log in.", 'success')
         return redirect("/")
 
 
@@ -131,6 +150,8 @@ def logout():
     if user:
         session.pop("user_email", None)
         session.pop("fname", None)
+        session.pop("user_id", None)
+        session.clear()
         return redirect("/")
     else:
         return redirect("/")
@@ -159,7 +180,7 @@ def show_user_profile():
     for trip in trips:
         if trip.is_active:
             # present
-            if date_now == trip.pick_up_date:
+            if date_now >= trip.pick_up_date:
                 active_trips.append(trip)
             # future
             if date_now < trip.pick_up_date:
@@ -185,13 +206,32 @@ def show_user_profile():
 def cancel_trip():
     trip_id = request.form.get('trip_id')
 
+    now = datetime.now()
     trip = Trip.query.filter_by(trip_id=trip_id).first()
-    if trip:
+    # after trip pickupdate
+
+    '''
+        # calculate and return days
+        days = drop_of_date - pick_up_date
+        days = days.days
+
+        pickupdate - currentdate should be greater than one day
+    '''
+
+    days = trip.pick_up_date - now.date()
+    print('----------->', days)
+    if trip and days.days > 1:
+    # after creation of trip
+    # if trip and  now >= (trip.created_at + timedelta(days=1)):
+        # print('----->', now)
+        # print('----->', trip.pick_up_date + timedelta(days=1))
         trip.is_canceled = True
         trip.is_active = False
         db.session.commit()
-
         flash('trip canceled!', 'success')
+        return redirect(url_for('show_user_profile'))
+    else:
+        flash('you can not cancel the trip before 24 hours!', 'error')
         return redirect(url_for('show_user_profile'))
 
 
@@ -223,7 +263,7 @@ def return_vehicle():
         rating = Rate(score=score, rate=review, trip_id=trip.trip_id, user_id=user.user_id, car_id=car_id)
         db.session.add(rating)
         db.session.commit()
-        flash('Return sucessfully with your review!', 'success')
+        flash('The car Returned sucessfully with your review!', 'success')
     else:
         flash('Return sucessfully!', 'success')
 
@@ -257,6 +297,45 @@ def all_car():
 
     cars= crud.get_cars()
     return render_template("all_vehicles.html", cars=cars)
+
+
+
+@app.route("/vehicle-cat-ajx", methods=['POST'])
+def vehicle_cat_ajx():
+    """View all cars."""
+    cat = request.form.get('cat')
+    cars = []
+
+    if cat == 'suv':
+        print('---------->', cat)
+        cars= Car.query.filter(Car.category.like('%SUV%')).all()
+
+    if cat == 'small-to-full':
+        cars= Car.query.filter(Car.category.like('%Small to Full Size%')).all()
+
+    if cat == 'luxury':
+        cars= Car.query.filter(Car.category.like('%Luxury & Convertibles%')).all()
+
+    json_cars = []
+
+    for item in cars:
+        car = {
+            'car_id':item.car_id,
+            'vehicle_type': item.vehicle_type,
+            'vehicle_name': item.vehicle_name,
+            'seats': item.seats,
+            'doors': item.doors,
+            'Transmission': item.Transmission,
+            'mpg': item.mpg,
+            'per_day_charges': item.per_day_charges,
+            'category': item.category,
+            'car_img': item.car_img.strip()
+        }
+        json_cars.append(car)
+
+    response = make_response(jsonify(json_cars), 200)
+    print(json_cars)
+    return response
 
 
 @app.route("/cars/search")
@@ -301,16 +380,122 @@ def cars_search():
     return render_template("cars_search.html", cars=seats_cars)
 
 
+@app.route('/vehicle-sort')
+def vehicle_sort():
+
+    cat = request.args.get('cat')
+
+    cars = []
+    if cat == 'suv':
+        cars = Car.query.filter(Car.category.like('%SUV%')).all()
+    elif cat == 'small-to-full':
+        cars = Car.query.filter(Car.category.like('%Small to Full Size%')).all()
+    elif cat == 'luxury':
+        cars = Car.query.filter(Car.category.like('%Luxury & Convertibles%')).all()
+    else:
+        cars = crud.get_cars()
+
+    sort_type = request.args.get('sort')
+    if not sort_type or len(sort_type) < 1:
+        return redirect(url_for('all_car'))
+
+    if sort_type == 'price':
+        sorted_cars = sorted(cars, key=lambda x: float(x.per_day_charges.strip()[1:]))
+    if sort_type == 'seats':
+        sorted_cars = sorted(cars, key=lambda x: float(x.seats.strip().split(' ')[0]), reverse=True)
+    if sort_type == 'mpg':
+        sorted_cars = sorted(cars, key=lambda x: get_mpg(x), reverse=True)
+    
+    return render_template("all_vehicles.html", cars=sorted_cars)
+
+
+
+@app.route('/vehicle-sort-ajx', methods=['POST'])
+def vehicle_sort_ajx():
+
+
+    cat = request.form.get('cat')
+
+    cars = []
+    if cat == 'suv':
+        cars = Car.query.filter(Car.category.like('%SUV%')).all()
+    elif cat == 'small-to-full':
+        cars = Car.query.filter(Car.category.like('%Small to Full Size%')).all()
+    elif cat == 'luxury':
+        cars = Car.query.filter(Car.category.like('%Luxury & Convertibles%')).all()
+    else:
+        cars = crud.get_cars()
+
+
+    sort_type = request.form.get('sort')
+
+    if sort_type == 'price':
+        sorted_cars = sorted(cars, key=lambda x: float(x.per_day_charges.strip()[1:]))
+    if sort_type == 'seats':
+        sorted_cars = sorted(cars, key=lambda x: float(x.seats.strip().split(' ')[0]), reverse=True)
+    if sort_type == 'mpg':
+        sorted_cars = sorted(cars, key=lambda x: get_mpg(x), reverse=True)
+    
+    json_cars = []
+
+    for item in sorted_cars:
+        car = {
+            'car_id':item.car_id,
+            'vehicle_type': item.vehicle_type,
+            'vehicle_name': item.vehicle_name,
+            'seats': item.seats,
+            'doors': item.doors,
+            'Transmission': item.Transmission,
+            'mpg': item.mpg,
+            'per_day_charges': item.per_day_charges,
+            'category': item.category,
+            'car_img': item.car_img.strip()
+        }
+        json_cars.append(car)
+
+    response = make_response(jsonify(json_cars), 200)
+    print(json_cars)
+    return response
+    pass
+
+
+
+@app.route('/get-cars-ajx', methods=['POST'])
+def get_cars_ajx():
+    if request.form.get('msg') == 'getAll':
+        cars = list(crud.get_cars())
+        json_cars = []
+
+        for item in cars:
+            car = {
+                'car_id':item.car_id,
+                'vehicle_type': item.vehicle_type,
+                'vehicle_name': item.vehicle_name,
+                'seats': item.seats,
+                'doors': item.doors,
+                'Transmission': item.Transmission,
+                'mpg': item.mpg,
+                'per_day_charges': item.per_day_charges,
+                'category': item.category,
+                'car_img': item.car_img.strip()
+            }
+            json_cars.append(car)
+        response = make_response(jsonify(json_cars), 200)
+        print(json_cars)
+        return response
+    pass
+
+
 @app.route("/favourite-cars")
 def favourite_cars():
     if not session.get('user_email'):
-        flash('please login to view/add your favourite cars', 'error')
+        flash('Please login to view/add your favourite cars', 'error')
         return redirect(url_for('all_car'))
     """View favourites cars."""
     cars= crud.get_cars()
     favourite_cars = []
     for car in cars:
-        if car.check_if_car_in_favorites():
+        if car.check_if_car_in_favorites(session.get('user_id')):
             favourite_cars.append(car)
 
     return render_template("favourite_cars.html", cars=favourite_cars)
@@ -409,9 +594,8 @@ def create_booking():
     user_id = session.get('user_id')
 
     if not user_id:
-        flash('login required', 'error')
+        flash('Login required', 'error')
         return redirect(url_for('display_login'))
-
 
     pick_up_location= request.form.get("pickLoc")
     drop_of_location= request.form.get("dropLoc")
@@ -643,37 +827,64 @@ def create_booking():
 def update_favorite(car_id):
     """Allows user to save a car to their profile."""
     #create a variable representing user in a session
-    user= session["user_email"]
+    user_email= session.get("user_email")
 
+    if not user_email:
+        flash('Please login to favorite cars!', 'error')
+        return redirect(url_for('show_car', car_id=car_id))
+#('show_car', car_id=car_id))
+#return redirect(url_for('homepage'))
     # get the car object
     car=crud.get_car_by_id(car_id)
     user_id= session["user_id"]
+
+    user = User.query.filter_by(user_id=user_id, email=user_email).one()
 
 
     #if current user is logged in
     if user:
         #If user has already saved the car, remove favorite.
         #Function from crud will return true/flase
-        response= crud.check_if_car_in_favorites(car_id)
+        response= crud.check_if_car_in_favorites(car_id, user.user_id)
+        pageName = request.form.get('pageName')
         if response:
             #unfill the fav button and remove from session.
-            crud.remove_favorite_car(car_id)
+            crud.remove_favorite_car(car_id, user.user_id)
 
-            page_name = request.form.get('page')
-            print(page_name)
-            if page_name == 'fav':
-                flash('car removed from favourites', 'success')
+            # page_name = request.form.get('page')
+            # print(page_name)
+            # if page_name == 'fav':
+            #     flash('car removed from favourites', 'success')
+            #     # return redirect(url_for('favourite_cars'))
+            # else:
+            #     flash('car removed from favourites', 'success')
+                # return redirect(url_for('all_car'))
+            
+            flash('Car removed from favorites', 'success')
+            if pageName == 'homepage':
+                return redirect(url_for('homepage'))
+            if pageName == 'favourites':
                 return redirect(url_for('favourite_cars'))
-            else:
-                flash('car removed from favourites', 'success')
+            if pageName == 'details':
+                return redirect(url_for('show_car', car_id=car_id))
+            if pageName == 'cars':
                 return redirect(url_for('all_car'))
 
         #Otherwise, create new fav for user.
         else:
             user_id= session["user_id"]
             favorite =crud.add_favorite_car(car_id, user_id)
-            flash('car added to favourites', 'success')
-            return redirect(url_for('all_car'))
+            flash('Car added to favorites', 'success')
+
+            if pageName == 'homepage':
+                return redirect(url_for('homepage'))
+            if pageName == 'favourites':
+                return redirect(url_for('favourite_cars'))
+            if pageName == 'details':
+                return redirect(url_for('show_car', car_id=car_id))
+            if pageName == 'cars':
+                return redirect(url_for('all_car'))
+
 
 
 @app.route("/check_favorites/<car_id>")
@@ -709,7 +920,7 @@ def handle_email():
         mail.send(msg)
 
 
-        flash('your message has been sent', 'success')
+        flash('Your message has been sent!', 'success')
         return redirect(url_for('homepage'))
     except:
         flash('can not send email at the moment', 'error')

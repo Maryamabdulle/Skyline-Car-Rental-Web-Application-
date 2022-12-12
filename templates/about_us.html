@@ -1,21 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Skyline Rental | about us{% endblock %}
+{% block title %}Skyline Rental | About{% endblock %}
 
 {% block body %}
 <style>
-</style>
-<div class="container" style="height:100%; min-height: 100vh;">
-<div class="">
-  <div class="card">
-    <div class="card-body">
-      <h2>WHO WE ARE </h2>  
+  .img-bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     background:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{url_for('static', filename='img/Signuppage.png')}});
+  }
 
-      <p>Skyline Car Rentals is a reliable local car rental company. Our well rounded knowledge in the car industry and the local market gives us the advantage to provide our customers friendly service at the most competitive rates.</p>
-      <p>We offer affordable cars to rent that best suits your trip using our straightforward booking panel. Hiring a car has never been easier, and you get to enjoy a variety of benefits.</p>
-      <p>We offer a selection of the most modern and safe rental cars. We take loving care of our cars. Each car is regularly safety checked, reliable and looks great.</p>
+  .cst-mg{
+    margin-top: 80px;
+  }
+</style>
+<div class="container-fluid img-bg" id="main">
+  <div class="container cst-mg" style="height:100%; min-height: 100vh;">
+    <div class="mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h2>WHO WE ARE </h2>  
+          <p>Skyline Car Rentals is a reliable local car rental company. Our well rounded knowledge in the car industry and the local market gives us the advantage to provide our customers friendly service at the most competitive rates.</p>
+          <div style="width: 38%;">
+            <img src="/static/img/1aboutuspage.jpg" alt="" width="80" height="120">
+          </div>
+          <p>We offer affordable cars to rent that best suits your trip using our straightforward booking panel. Hiring a car has never been easier, and you get to enjoy a variety of benefits.</p>
+          <div style="width: 38%;">
+            <img src="/static/img/Aboutuspage.jpg" alt="" width="80" height="120">
+          </div>
+          <p>We offer a selection of the most modern and safe rental cars. We take loving care of our cars. Each car is regularly safety checked, reliable and looks great.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    </div>
 </div>
 {% endblock body %}

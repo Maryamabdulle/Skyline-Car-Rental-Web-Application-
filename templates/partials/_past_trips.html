@@ -5,15 +5,15 @@
         <th scope="col">Pickup Location</th>
         <th scope="col">Dropoff Location</th>
         <th scope="col">Pickup Date</th>
-        <th scope="col">Pickoff Date</th>
+        <th scope="col">Dropoff Date</th>
         </tr>
     </thead>
     <tbody>
         {% for trip in past_trips %}
         <tr>
             <td>{{ trip.car.vehicle_name }}</td>
-            <td>{{ trip.pick_up_location }}</td>
-            <td>{{ trip.drop_of_location }}</td>
+            <td>{{ trip.pick_up_location|truncate(40) }}</td>
+            <td>{{ trip.drop_of_location|truncate(40) }}</td>
             <td>{{ trip.pick_up_date }}</td>
             <td>{{ trip.drop_of_date }}</td>
         </tr>    

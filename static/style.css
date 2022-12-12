@@ -286,3 +286,17 @@ h3 {
 #slogan2{
     color: rgba(5,4,4,0.479)
 }
+.skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+.skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }

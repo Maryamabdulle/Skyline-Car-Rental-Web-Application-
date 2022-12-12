@@ -35,7 +35,7 @@ function formPickupField(){
   const locationStr = $('#pickupLoc').val();
   saveLocalLoc('pick', locationStr);
 
-  // TODO when ever thing is done refresh map
+  
   initMap();
 }
 
@@ -44,7 +44,7 @@ function formDropoffField(){
   const locationStr = $('#dropoffLoc').val();
   saveLocalLoc('drop', locationStr);
 
-  // TODO when ever thing is done refresh map
+  
   initMap();
 }
 
@@ -59,6 +59,20 @@ function setMarker(latlng, map, address){
 
   google.maps.event.addListener(redMarker, 'click', function(){
     window.open(`https://maps.google.com?q=${redMarker.position}`);
+    return false;
+    // not returning any place
+    console.log(this.position);
+    console.log(this.map);
+    let gmlatlng = new google.maps.LatLng(33.448376, 112.074036);
+    let request = {
+      location: gmlatlng,
+      radius: '500',
+      type: ['car rental']
+    };
+    let service = new google.maps.places.PlacesService(this.map);
+    service.nearbySearch(request, function(results, status){
+      console.log(results);
+    });
   });
 
   var greenMarker;
@@ -117,7 +131,7 @@ function initMap() {
 
     let locationPickup = loadLocalLoc('pick');
     let locationDropOff = loadLocalLoc('drop');
-    // get_latlng('2640 East Indian School Road, NA, Phoenix, AZ, 85016, US', map);
+    
     get_latlng(locationPickup, map, setMarker);
 
     get_latlng(locationDropOff, map, setMarker);

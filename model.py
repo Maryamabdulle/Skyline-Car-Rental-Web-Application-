@@ -13,7 +13,7 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key= True,  autoincrement = True)
     fname = db.Column(db.String(25), nullable = False)
     lname = db.Column(db.String(25), nullable = False)
-    email = db.Column(db.String(100),nullable = False)
+    email = db.Column(db.String(100),nullable = False, unique=True)
     password= db.Column(db.String(),nullable = False)
     address = db.Column(db.String(100), nullable = False)
     contact = db.Column(db.String(30), nullable = False)
@@ -48,8 +48,8 @@ class Car(db.Model):
     #Added
     trips=db.relationship('Trip', backref= 'car')
 
-    def check_if_car_in_favorites(self):
-        return True if Favorite.query.filter_by(car_id=self.car_id).first() else False 
+    def check_if_car_in_favorites(self, user_id):
+        return True if Favorite.query.filter_by(car_id=self.car_id, user_id=user_id).first() else False 
 
 
 # Method to identify ear car instance by car_id and vehicle_type
@@ -74,6 +74,7 @@ class Trip(db.Model):
     drop_of_date= db.Column(db.Date, nullable = False)
     pick_up_time= db.Column(db.DateTime, nullable = False)
     drop_of_time= db.Column(db.DateTime, nullable = False)
+    created_at = db.Column(db.DateTime, nullable = False, default=datetime.now())
     # boolean fields
     is_active = db.Column(db.Boolean, nullable=False, default=True)
     is_canceled = db.Column(db.Boolean, nullable=False, default=False)
@@ -125,6 +126,7 @@ class Rate(db.Model):
     trip_id= db.Column(db.Integer, db.ForeignKey("trips.trip_id"), nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
     car_id= db.Column(db.Integer, db.ForeignKey("cars.car_id"), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 #Create SQLALchemy relationship between trips and rate
     
     trip= db.relationship("Trip",backref="rates")

@@ -1,37 +1,37 @@
 vehicle_type,vehicle_name,category,seats,doors,Transmission,large_bag,small_bag,ac,mpg,per_day_charges,car_img
 Economy,Ford Fiesta,Small to Full Size,5 Seats,4 Doors ,Automatic  Transmission,1 Large Bag,1 Small Bag,A/C,27-35,$145,Ford_Fiesta.png
-Compact,Kia Soul,Small to Full Size,5 Seats,4 Doors,Automatcic Transmission,1 Large Bag,2 Small Bag,A/C,25-29,$151,Kia _Soul.png
+Compact,Kia Soul,Small to Full Size,5 Seats,4 Doors,Automatic Transmission,1 Large Bag,2 Small Bag,A/C,25-29,$151,Kia _Soul.png
 Intermediate ,Toyota Corolla,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,29-35,$156,Toyota _Corolla.png
 Standard,Volkswagen Jetta,Small to Full Size,5 Seats,4 Doors,Automatic  Transmission,1 Large Bag,2 Small Bag,A/C,24-35,$173,Volkswagen_Jetta.png
 Full Size,Toyota Camry,Small to Full Size,5 Seats,4 Doors,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,22-30,$175,Toyota _Camry .png
 Full Size,Chevy Malibu, Small to Full Size, 5 Seats, 4 Doors, Automatic Transmission , 2 Large Bag , 1 Small Bag , A/C, 22-30, $125, Chevy Malibu.png
 Standard Elite, BMW 228i gran coupe, Small to Full Size  , 5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 24-35, $173, BMW 228i gran coupe.png
-Intermediate Electric Car, Nissan LEAF, Small to Full Size  ,  5 Seats, 4 Doors, 'Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 27-35,$112,Nissan LEAF.png
+Intermediate Electric Car, Nissan LEAF, Small to Full Size  ,  5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 27-35,$112,Nissan LEAF.png
 Full-Size Hybrid Car , Ford Fusion Hybrid, Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 22-30,$122, Ford Fusion Hybrid.png
 Standard , Chevrolet Impala, Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 24-35, $157, Chevrolet Impala .png
 Standard Hybrid , Toyota Prius,Small to Full Size ,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 24-35,$129, Toyota Prius.png
-Compact, 'Nissan Versa , Small to Full Size,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag,A/C, 25-29, $111,Nissan Versa .png
+Compact, Nissan Versa , Small to Full Size,5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag,A/C, 25-29, $111,Nissan Versa .png
 Intermediate SUV,Mazda CX-5,SVU,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,1 Small Bag,A/C,27-35,$189,Mazda_CX-5.png
-Standard SUV,Ford Edge,SUV,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,2 Small Bag,A/C,15-22,204,Ford _Edge.png
-Standard SUV,Toyota 4Runner, SUVs, 5 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, 15-22,$102, Toyota 4Runner.png
-Standard Elite SUV, Chevrolet Traverse,  SUVs, 7 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, 15-20,$100, Chevrolet Traverse.png
-Premium SUV, Chevrolet Suburban,  SUVs, 7/8 Seats', 4 Doors, Automati Transmission , 3 Large Bag, 4 Small Bag, A/C, 16-21,$278, Chevrolet Suburban.png
-Compact SUV, Nissan Kicks, SUVs, 5 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 2 Small Bag, A/C, 16-21,$179, Nissan Kicks .png
-Full-Size SUV, Chevrolet Tahoe, SUVs, 7/8 Seats, 4 Doors, Automati Transmission , 4 Large Bag, 3 Small Bag, A/C, 16-21,$312, Chevrolet Tahoe.png
-Luxury SUV, Infiniti QX80, SUVs, 8 Seats', 4 Doors, Automati Transmission , 4 Large Bag', 2 Small Bag, A/C, 16-21,$260,Infiniti QX80 .png
-Premium Crossover SUV, Volkswagen Atlas, SUVs,  8 Seats, 4 Doors, Automati Transmission' , 4 Large Bag, 3 Small Bag, A/C, 15-22,$299, Volkswagen Atlas.png
-Full-Size SUV, Ford Expedition, SUVs,  7/8 Seats, 4 Doors, Automati Transmission' , 4 Large Bag, 3 Small Bag, A/C, 16-21,$299, Ford Expedition.png
-Standard Elite SUV, GMC Acadia, SUVs, 7 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 3 Small Bag, A/C, 15-20,$128, GMC Acadia.png
-Standard Elite SUV, Dodge Durango, SUVs,  8 Seats, 4 Doors, Automati Transmission , 2 Large Bag, 3 Small Bag, A/C, 15-22,$292, Dodge Durango.png
+Standard SUV,Ford Edge,SUV,5 Seats ,4 Doors ,Automatic Transmission,1 Large Bag,2 Small Bag,A/C,15-22,$204,Ford _Edge.png
+Standard SUV,Toyota 4Runner, SUVs, 5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 15-22,$102, Toyota 4Runner.png
+Standard Elite SUV, Chevrolet Traverse,  SUVs, 7 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 15-20,$100, Chevrolet Traverse.png
+Premium SUV, Chevrolet Suburban,  SUVs, 8 Seats', 4 Doors, Automatic Transmission , 3 Large Bag, 4 Small Bag, A/C, 16-21,$278, Chevrolet Suburban.png
+Compact SUV, Nissan Kicks, SUVs, 5 Seats, 4 Doors, Automatic Transmission , 2 Large Bag, 2 Small Bag, A/C, 16-21,$179, Nissan Kicks .png
+Full-Size SUV, Chevrolet Tahoe, SUVs, 8 Seats, 4 Doors, Automatic Transmission , 4 Large Bag, 3 Small Bag, A/C, 16-21,$312, Chevrolet Tahoe.png
+Luxury SUV, Infiniti QX80, SUVs, 8 Seats', 4 Doors, Automatic Transmission , 4 Large Bag', 2 Small Bag, A/C, 16-21,$260,Infiniti QX80 .png
+Premium Crossover SUV, Volkswagen Atlas, SUVs,  8 Seats, 4 Doors, Automatic Transmission , 4 Large Bag, 3 Small Bag, A/C, 15-22,$299, Volkswagen Atlas.png
+Full-Size SUV, Ford Expedition, SUVs,  8 Seats, 4 Doors, Automatic Transmission , 4 Large Bag, 3 Small Bag, A/C, 16-21,$299, Ford Expedition.png
+Standard Elite SUV, GMC Acadia, SUVs, 7 Seats, 4 Doors, Automatic Transmission , 2 Large Bag, 3 Small Bag, A/C, 15-20,$128, GMC Acadia.png
+Standard Elite SUV, Dodge Durango, SUVs,  8 Seats, 4 Doors, Automatic Transmission , 2 Large Bag, 3 Small Bag, A/C, 15-22,$292, Dodge Durango.png
 Premium,Volkswagen Passat,Luxury & Convertibles,5 Seats,4 Doors,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,18-29,$198,Volkswagen_ Passat .png
 Convertible,Ford Mustang Convertible,Luxury & Convertibles,4 Seats ,2 Doors,Automatic Transmission,1 Large Bag,1 Small Bag,A/C,19-24,$223,Ford _Mustang Convertible.png
 Luxury,Chrysler 300,Luxury & Convertibles,5 Seats,4 Doors ,Automatic Transmission,2 Large Bag,2 Small Bag,A/C,18-21,$215,Chrysler _300.png
-Standard Elite Coupe, Dodge Challenger R/T, Luxury & Convertibles, 4 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag, A/C, 15-19,$187, Dodge Challenger.png
-Intermediate Elite Electric, Tesla Model 3' ,Luxury & Convertibles, 5 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, Electric,$120, Tesla Model 3.png
-Standard Sport, Ford Mustang Coupe ,  Luxury & Convertibles, 4 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, 16-24,$100,  Ford _Mustang Convertible.png
-Convertible , BMW 7-Series , Luxury & Convertibles, 4 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag, A/C, 19-24,$157, BMW 7-Series.png
-Luxury , Jaguar F-Type SVR , Luxury & Convertibles ,2 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag', A/C, 15-19,$107, Jaguar F-Type SVR.png
-Luxury, Mercedes Benz SL400 ,Luxury & Convertibles, 2 Seats', 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag', A/C, 18-21,$172, Mercedes Benz SL400.png
-Convertible, Chevrolet camaro convertible ,Luxury & Convertibles, 4 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag, A/C, 19-24,$223, chevrolet camaro convertible .png
-Luxury Elite Electric Car, Porsche Taycan ,Luxury & Convertibles,  4 Seats, 4 Doors, Automati Transmission , 1 Large Bag, 2 Small Bag, A/C, Electric,$315,Porsche Taycan.png
-Luxury, Lexus LC 500 ,  Luxury & Convertibles, 4 Seats, 2 Doors, Automati Transmission , 1 Large Bag, 1 Small Bag', 'A/C', 15-19,$178, Lexus LC 500.png
+Standard Elite Coupe, Dodge Challenger R/T, Luxury & Convertibles, 4 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 15-19,$187, Dodge Challenger.png
+Intermediate Elite Electric, Tesla Model 3' ,Luxury & Convertibles, 5 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, Electric,$120, Tesla Model 3.png
+Standard Sport, Ford Mustang Coupe ,  Luxury & Convertibles, 4 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, 16-24,$100,  Ford _Mustang Convertible.png
+Convertible , BMW 7-Series , Luxury & Convertibles, 4 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 19-24,$157, BMW 7-Series.png
+Luxury , Jaguar F-Type SVR , Luxury & Convertibles ,2 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 15-19,$107, Jaguar F-Type SVR.png
+Luxury, Mercedes Benz SL400 ,Luxury & Convertibles, 2 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 18-21,$172, Mercedes Benz SL400.png
+Convertible, Chevrolet camaro convertible ,Luxury & Convertibles, 4 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 19-24,$223, chevrolet camaro convertible .png
+Luxury Elite Electric Car, Porsche Taycan ,Luxury & Convertibles,  4 Seats, 4 Doors, Automatic Transmission , 1 Large Bag, 2 Small Bag, A/C, Electric,$315,Porsche Taycan.png
+Luxury, Lexus LC 500 ,  Luxury & Convertibles, 4 Seats, 2 Doors, Automatic Transmission , 1 Large Bag, 1 Small Bag, A/C, 15-19,$178, Lexus LC 500.png

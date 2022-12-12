@@ -1,16 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %}Trip{% endblock %}
+{% block title %}Skyline Car Rental | Trip{% endblock %}
 
 {% block body %}
   <style>
     .hide{
       display: none;
     }
+
+    .img-bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+     background:linear-gradient(0deg, rgba(94, 81, 81, 0.2), rgba(0, 0, 0, 0.2)), url({{url_for('static', filename='img/favoritespage.png')}});
+  }
+
+  .cst-mg{
+    margin-top: 80px;
+  }
   </style>
 
-    <!-- main container -->
-    <div class="container" style="height:100%; min-height: 100vh;">
+    <div class="container-fluid img-bg" id="main">
+      <!-- main container -->
+    <div class="container cst-mg" style="height:100%; min-height: 100vh;">
       <div class="mb-4">
         <div class="d-flex flex-row w-75 mx-auto">
           <button id="locationBtn" class="btn btn-secondary mx-1">Select Location</button>
@@ -32,14 +45,14 @@
                     <select required onchange="formPickupField()" class="form-select" id="pickupLoc" name="pickLocation">
                       <option selected disabled>---select---</option>
                       {%for item in data1%}
-                      <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                      <option value="{{ item.car_address.split('|')[0] }} {{ item.car_address.split('|')[1] }}">{{ item.car_address.split('|')[0] }}</option>
                       {% endfor %}
                     </select>
                   </div>
 
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="" id="locationCheckbox">
-                    <label class="form-check-label" for="locationCheckbox">
+                    <label class="form-check-label text-light" for="locationCheckbox">
                       same location for dropoff
                     </label>
                   </div>
@@ -49,11 +62,11 @@
                     <select onchange="formDropoffField()" class="form-select" id="dropoffLoc" name="dropLocation">
                       <option selected disabled>---select---</option>
                       {%for item in data2%}
-                      <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                      <option value="{{ item.car_address.split('|')[0] }} {{ item.car_address.split('|')[1] }}">{{ item.car_address.split('|')[0] }}</option>
                       {% endfor %}
                     </select>
                   </div>
-                  <button id="submitLocation" type="button" class="btn btn-outline-success">Next</button>
+                  <button id="submitLocation" type="button" class="btn btn-success">Next</button>
               </div><!-- /form div -->
           </div> <!-- form side -->
 
@@ -69,15 +82,44 @@
 
       <!-- page 2  cars-->
       <div class="row page2 hide">
-        {% for item in cars %}
-        <div class="col-md-4 mb-3">
+        <div class="col-md-12 mx-auto mb-4">
+          <div  class="d-flex justify-content-center">
+            <div class="mx-1">
+              <select id="sortInput" name="sort" class="form-select" aria-label="Default select example">
+                <option selected disabled>---Sort By---</option>
+                <option value="price">Price (Low to High)</option>
+                <option value="mpg">Mileage (High to Low)</option>
+                <option value="seats">Number of seats (High to Low)</option>
+              </select>
+            </div>
+            <div class="mx-1">
+              <select id="catInput" name="sort" class="form-select" aria-label="Default select example">
+                <option disabled>---Cars Category---</option>
+                <option selected value="all-cars">All Cars</option>
+                <option value="small-to-full">Small to Full Size</option>
+                <option value="suv">SUVs</option>
+                <option value="luxury">Luxuruy & Convertibles</option>
+              </select>
+            </div>
+            <div style="max-width: 100px;">
+              <button id="catSortSearchBtn" class="btn btn-secondary">Search</button>
+            </div>
+          </div>
+        </div>
+        <div id="carContainer" class="row">
+
+        </div>
+        {#
+        <!-- {% for item in cars %} -->
+        <!-- car item -->
+        <!-- <div class="col-md-6 mb-3">
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-7">
                   <img src="{{ url_for('static', filename='img/') }}{{item.car_img.strip() or 'profile.jpg'}}" alt="">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-5">
                   <div>Name: {{ item.vehicle_name }}</div>
                   <div>Type: {{ item.vehicle_type }}</div>
                   <div class="row">
@@ -89,8 +131,8 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
                       <button data-carppd="{{ item.per_day_charges }}" data-carname="{{ item.vehicle_name }}" data-carid="{{ item.car_id }}" class="selectCar btn btn-sm btn-outline-success">select</button>
                     </div>
                   </div>
@@ -98,8 +140,10 @@
               </div>
             </div>
           </div>
-        </div>
-        {% endfor %}
+        </div> -->
+        <!-- car item -->
+        <!-- {% endfor %} -->
+        #}
     </div> <!-- /page2 -->
 
 
@@ -211,6 +255,7 @@
     </div> <!-- /page4 -->
 
     </div>
+    </div>
 
 
 <!-- jquery -->
@@ -218,10 +263,11 @@
 <script src="/static/js/maps.js"></script>
 <script
 async
-src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&libraries=places">
 </script>
 
 <script>
+
 
   $(document).ready(function(){
 
@@ -258,6 +304,77 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
       if (pageCount !== index){
         item.prop('disabled', true);
       }
+    });
+
+    // catSortSearchBtn
+    $('#catSortSearchBtn').on('click', function(){
+      // alert('clicked');
+      const sortInput =  $('#sortInput').val();
+      const catInput =  $('#catInput').val();
+
+      if( catInput == null || carBtn.length < 1 || sortInput == null || sortInput.length < 1){
+        alert('Please select both field');
+        return false;
+      }
+
+      // search with ajax
+      $.ajax({
+        url: '{{ url_for("vehicle_sort_ajx") }}',
+        type: 'POST',
+        data: {
+          'sort': sortInput,
+          'cat': catInput
+        },
+        success: function(resp){
+          console.log(resp);
+          
+          let carElements = ''
+          for(let i=0; i<resp.length; i++){
+            carElements += `
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <img src="{{ url_for('static', filename='img/') }}${resp[i].car_img}" alt="">
+                    </div>
+                    <div class="col-md-5">
+                      <div><span class='text-muted'>Name:</span> ${resp[i].vehicle_name}</div>
+                      <div><span class='text-muted'>Type:</span> ${resp[i].vehicle_type}</div>
+                      <div><span class='text-muted'>Charges/Day:</span> ${resp[i].per_day_charges}</div>
+                      <div><span class='text-muted'>MPG:</span> ${resp[i].mpg}</div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          ${resp[i].seats}
+                        </div>
+                        <div class="col-md-6">
+                          ${resp[i].doors}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                          <button data-carppd="${resp[i].per_day_charges}" data-carname="${resp[i].vehicle_name}" data-carid="${resp[i].car_id}" class="selectCar btn btn-sm btn-outline-success">select</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            `;
+
+            $('#carContainer').html(carElements);
+          }
+
+        },
+        error: function(resp){
+          console.log(resp);
+        }
+      });
+
+
     });
 
 
@@ -325,11 +442,92 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
     submitLocation.on('click', function(){
 
       if(!isLogged){
-        alert('please login')
+        alert('Please login to make a book a car')
         return false;
       }
 
 
+      // get all cars
+      $.ajax({
+      url: '{{ url_for("get_cars_ajx") }}',
+      type: 'POST',
+      data: {
+        'msg': 'getAll'
+      },
+      success: function(resp){
+        console.log(resp);
+        const carsPage = $('#carContainer');
+        for(let i=0; i< resp.length; i++){
+            carsPage.append(
+            `
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <img src="{{ url_for('static', filename='img/') }}${resp[i].car_img}" alt="">
+                    </div>
+                    <div class="col-md-5">
+                      <div><span class='text-muted'>Name:</span> ${resp[i].vehicle_name}</div>
+                      <div><span class='text-muted'>Type:</span> ${resp[i].vehicle_type}</div>
+                      <div><span class='text-muted'>Charges/Day:</span> ${resp[i].per_day_charges}</div>
+                      <div><span class='text-muted'>MPG::</span> ${resp[i].mpg}</div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          ${resp[i].seats}
+                        </div>
+                        <div class="col-md-6">
+                          ${resp[i].doors}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                          <button data-carppd="${resp[i].per_day_charges}" data-carname="${resp[i].vehicle_name}" data-carid="${resp[i].car_id}" class="selectCar btn btn-sm btn-outline-success">select</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            `
+          );
+        }
+      },
+      error: function(resp){
+        console.log(resp);
+        alert('error');
+      }
+    });
+
+
+
+
+      const pickupLocVal = $('#pickupLoc').val();
+      const dropoffLocVal = $('#dropoffLoc').val();
+
+      if (pickupLocVal == null || dropoffLocVal == null){
+        alert('Please select both locations');
+        return false;
+      }
+
+      // add to localstorage ---> locations
+      let booking = {
+        step: 1,
+        pickLoc: pickupLocVal,
+        dropLoc: dropoffLocVal
+      }
+      localStorage.setItem('booking', JSON.stringify(booking));
+
+      // pageCount = 1;
+      // hidePage(page1, locationBtn, 'hide');
+      // showPage(page2, carBtn, 'page2', pageCount);
+
+      page1.addClass('hide');
+      page2.removeClass('hide');
+      carBtn.prop('disabled', false);
 
       const pickupLocVal = $('#pickupLoc').val();
       const dropoffLocVal = $('#dropoffLoc').val();
@@ -361,7 +559,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
       // ==========================
 
       // on selecting a car
-      $('.selectCar').on('click', function(){
+      $(document).on("click", ".selectCar", function(){
         const carId = $(this).data('carid');
         const carName = $(this).data('carname');
         const carppd = $(this).data('carppd');
@@ -380,6 +578,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
         page3.removeClass('hide');
         dateBtn.prop('disabled', false);
       });
+
 
     });
 
@@ -401,7 +600,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
 
       // if fields are empty
       if(pickDate.length < 1 || dropDate.length < 1 || pickTime.length < 1 || dropTime.length < 1){
-        alert('please fill all fields');
+        alert('Please fill all fields');
         return false;
       }
 
@@ -455,8 +654,8 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
 
             // populate booking info
             $('#i-carName').html(booking['carName']);
-            $('#i-pickLoc').html(booking['pickLoc']);
-            $('#i-dropLoc').html(booking['dropLoc']);
+            $('#i-pickLoc').html(booking['pickLoc'].substring(0, 36)+'...');
+            $('#i-dropLoc').html(booking['dropLoc'].substring(0, 36)+'...');
             $('#i-pickTime').html(booking['pickDate']);
             $('#i-dropTime').html(booking['dropDate']);
             $('#i-days').html(booking['days']);
@@ -545,7 +744,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
             alert('Already Booked');
             return false;
           }
-          alert('something went wrong please try again later');
+          alert('Something went wrong please try again later');
         },
         complete: function(resp){
           if (resp.responseText == 'ok'){
@@ -564,7 +763,17 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
   });
 </script>
 
+{% endblock %}
 
+{% block after_body %}
+
+{% endblock %}
+
+{% endblock %}
+
+{% block after_body %}
+
+{% endblock %}
 
 {% endblock %}
 

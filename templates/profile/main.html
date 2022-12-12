@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Trip{% endblock %}
+{% block title %}Skyline Car Rental | Profile{% endblock %}
 
 {% block body %}
 
+  {% include('partials/_question_modal.html') %}
+
   {% include('partials/_rating_modal.html') %}
     <!-- main container -->
-    <div class="container">
+    <div class="container mt-4" style="min-height: 100vh; height:100%!important" id="main">
         <div class="row no-gutters">
           <div class="col-md-12 mb-2">
             <h5 class="text-capitalize">Welcome {{ user.fname }} {{ user.lname }}</h5>
@@ -89,6 +91,7 @@
             </div>
           </div>
     </div>
+    </div>
 
 
 
@@ -112,6 +115,11 @@ $(document).ready(function(){
     $(this).show();
   });
   
+
+
+  $('#qModalBtn').on('click',function(){
+    alert('Pickup car or cancel booking');
+  });
 });    
 </script>
 {% endblock %}

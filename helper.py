@@ -25,3 +25,10 @@ def check_card_expfrmt(var):
 			return False
 	except:
 		return False
+
+def get_mpg(car):
+
+	try:
+		return float(car.mpg.strip().split('-')[0])
+	except:
+		return 0.0

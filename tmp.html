@@ -1,0 +1,564 @@
+{% extends 'base.html' %}
+
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+
+    <!-- main container -->
+    <div class="container">
+        <!-- form -->
+        <div class="form">
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block after_body %}
+
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<head> <link rel="stylesheet" href="/static/map.css"/></head>
+<body> -->
+
+{% extends 'base.html' %}
+
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+
+    <div class="w-75">
+        <div class="main-agileits">
+            <h2 class="sub-head">Book A Car Now!</h2
+                <div class="sub-main">
+
+                    <form action="/trip" method="POST">
+
+                        <div class="main-agileits">
+                                <select id="car" name="car" onchange="change_country(this.value)" class="from-field required select">
+                                    <option value="1">Select Car </option>
+                                    <option value="2">Ford Fiesta </option>
+                                    <option value="3">Kia Soul </option>
+                                    <option value="4">Toyota Corolla </option>
+                                    <option value="5">Volkswagen Jetta </option>
+                                    <option value="6">Toyota Camry </option>
+                                    <option value="7">Mazda CX-5 </option>
+                                    <option value="8">Ford Edge </option>
+                                    <option value="9">Volkswagen Passat </option>
+                                    <option value="10">Ford Mustang Convertible </option>
+                                    <option value="11">Chrysler </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="main-agileits">
+                    <div class="sub-main">
+                        <label for="location1">Choose a Pick Up Location:</label>
+                        <select id="location1" name="location1" onchange="change_country(this.value)" class="from-field required select">
+
+                            <option value="1">2640 East Indian School Road, NA, Phoenix, AZ, 85016, US
+                            </option>
+                            <option value="2"> 1412 North Scottsdale Road, (at Weber Rd), Tempe, AZ, 85281, US
+                            </option>
+                            <option value="3"> 5102 West Latham Street, NA, Phoenix, AZ, 85043, US
+                            </option>
+                            <option value="4"> 5401 North Scottsdale Road, NA, Scottsdale, AZ, 85250, US
+                            </option>
+                            <option value="5">3855 West Ray Road - Suite 1, (at McClintock Drive), Chandler, AZ, 85226, US
+                            </option>
+                            <option value="6">529 South Country Club Drive, NA, Mesa, AZ, 85210, US
+                            </option>
+                            <option value="7">1401 North Arizona Avenue, NA, Chandler, AZ, 85225, US
+                            </option>
+                            <option value="8">8752 East Shea Boulevard - Suite 132, (at Pima Freeway), Scottsdale, AZ, 85260, US
+                            </option>
+                            <option value="9">245 East Bell Road - Suite 24, NA, Phoenix, AZ, 85022, US
+                            </option>
+                            <option value="10">1401 North Arizona Avenue , Chandler, AZ, 85225
+                            </option>
+                            <option value="11">2860 South Alma School Road - Suite 34, Chandler, AZ-85286
+                            </option>
+                            <option value="12">6650 East Superstition Springs Boulevard, Mesa, AZ-85206
+                            </option>
+                            <option value="13">1805 East Sky Harbor Circle South Phoenix AZ-85034
+                            </option>
+                            <option value="14">6322 East Superstition Springs Boulevard,  Mesa, AZ-85206
+                            </option>
+                            <option value="15">8969 East Talking Stick Way - Suite C-7, Scottsdale, AZ, 85250, US
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+            <br/>
+            <div class="main-agileits">
+                <div class="sub-main">
+                    <label for="location2">Choose a Drop off Location:</label>
+                    <select id="location2" name="location2" onchange="change_country(this.value)" class="from-field required select">
+                        <option value="1">4931 E Mcdowell Rd Phoenix, AZ 85008
+                        </option>
+                        <option value="2"> 1815 N Scottsdale Rd Scottsdale, AZ 85257
+                        </option>
+                        <option value="3"> 1225 S 7th St Phoenix, AZ 85034
+                        </option>
+                        <option value="4"> 4635 N 7th St Phoenix, AZ 85014
+                        </option>
+                        <option value="5">1131 W Broadway Rd Tempe, AZ 85282
+                        </option>
+                        <option value="6">1120 N Mcclintock Dr Tempe, AZ 85281
+                        </option>
+                        <option value="7">4121 S Central Ave Phoenix, AZ 85040
+                        </option>
+                        <option value="8">2750 W Camelback Rd Phoenix, AZ 85017
+                        </option>
+                        <option value="9"> 1801 E. Baseline Rd STE 101 Tempe, AZ 85283
+                        </option>
+                        <option value="10">1215 West Broadway Road Mesa, AZ 85202
+                        </option>
+                        <option value="11"> 10233 N 19th Ave Phoenix, AZ 85021
+                        </option>
+                        <option value="12"> 4908 W Glendale Ave Glendale, AZ 85301
+                        </option>
+                        <option value="13">4206 E Chandler Blvd Ste 32 Phoenix, AZ 85048
+                        </option>
+                        <option value="14">132 E Baseline Rd Mesa, AZ 85210
+                        </option>
+                        <option value="15">2810 E Bell Rd Phoenix, AZ 85032
+                        </option>
+                        <option value="16">16275 N Greenway Hayden Loop Scottsdale, AZ 85260
+                        </option>
+                        <option value="17">4139 W Bell Rd Ste 15 Phoenix, AZ 85053
+                        </option>
+                        <option value="18">6033 S Sossaman Rd STE 104 Mesa, AZ 85212
+                        </option>
+                        <option value="19">331 E Chandler Blvd Chandler, AZ 85225
+                        </option>
+                        <option value="20">555 W Bell Rd Phoenix, AZ 85023
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+        <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!---Dates-->
+            <label for="start-date">Start date:</label>
+            <input type="date" id="start-date" name="pick_up_date"
+                        value="2022-11-9"
+                        min="2022-01-01"  max="2023 12-29">
+            <br/>
+            <br/>
+                <label for="end-date">End date:</label>
+                <input type="date" id="end-date" name="drop_of_date"
+                        value="2022-11-9"
+                        min="2022-01-01"  max="2023 12-29">
+            <br/>
+            <br/>
+        <!---Times-->
+            <label for="apt">Choose a time for car pick up:</label>
+
+            <input type="time" id="pickup-time" name="pickup-time"
+                min="09:00" max="19:00" >
+
+            <br/>
+            <br/>
+            <label for="apt">Choose a time for car drop off:</label>
+
+            <input type="time" id="dropoff-time" name="dropoff-time"
+                min="09:00" max="19:00" >
+            <br/>
+            <br/>
+
+            <small> Pick up and drop off hours are 9am-7pm</small>
+            <br/>
+            <br/>
+            <input type="submit" value="BOOK NOW">
+        </form>
+
+        <div class="clear"></div>
+
+        <figure class="figure w-75">
+          <!-- <img src="..." class="figure-img img-fluid rounded" alt="..."> -->
+          <div id="map" class=""
+          style="width: 100%; height: 450px;"
+          ></div>
+          <figcaption class="figure-caption text-center">A caption for the above image.</figcaption>
+        </figure>
+    </div>
+<script src="/static/js/maps.js"></script>
+<script
+async
+src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
+</script>
+</body>
+
+{% endblock %}
+<!-- </html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- *********************************** -->
+<!-- for reference reservation page -->
+<!-- *********************************** -->
+
+{% extends 'base.html' %}
+
+{% block title %}Trip{% endblock %}
+
+{% block body %}
+
+    <!-- main container -->
+    <div class="container">
+        <div class="row">
+            <!-- form side -->
+            <div class="col-md-5">
+                <!-- form div-->
+                <div class="form">
+                    <form action="/trip" method="POST">
+                        <div class="input-group mb-3">
+                          <select class="form-select" id="inputGroupSelect01" name="car" required>
+                            <option selected disabled>---Select a Car---</option>
+                            {% for car in cars %}
+                              <option value="{{ car.car_id }}">{{ car.vehicle_name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="inputGroupSelect01">Choose a pickup location</label>
+                          <select required onchange="formPickupField()" class="form-select" id="pickupLoc" name="pickLocation">
+                            <option selected disabled>---select---</option>
+                            {%for item in data1%}
+                            <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="inputGroupSelect01">Choose a Drop off location</label>
+                          <select onchange="formDropoffField()" class="form-select" id="dropoffLoc" name="dropLocation">
+                            <option selected disabled>---select---</option>
+                            {%for item in data2%}
+                            <option value="{{ item.car_address }}">{{ item.car_address }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Start Date</span>
+                          <input type="date" id="start-date" name="pick_up_date"
+                                value="2022-11-9"
+                                min="2022-01-01"  max="2023 12-29" class="form-control" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">End Date</span>
+                          <input class="form-control" type="date" id="end-date" name="drop_of_date"
+                                value="2022-11-9"
+                                min="2022-01-01"  max="2023 12-29" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Choose time for car pickup</span>
+                          <input class="form-control" type="time" id="pickup-time" name="pick_up_time"
+                        min="09:00" max="19:00" required>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon3">Choose time for car dropoff</span>
+                          <input type="time" id="dropoff-time" name="drop_of_time"
+                        min="09:00" max="19:00" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Book Now</button>
+                    </form>
+                </div><!-- /form div -->
+            </div> <!-- form side -->
+
+            <!-- map side -->
+            <div class="col-md-7">
+                <!-- <button onclick="initMap()" class="btn btn-danger">Reload map</button> -->
+                <div id="map" class=""style="width: 100%; height: 55vh;">
+
+                </div>
+            </div> <!-- map side -->
+        </div>
+
+    </div>
+
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="/static/js/maps.js"></script>
+<script
+async
+src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap">
+</script>
+
+
+
+{% endblock %}
+
+{% block after_body %}
+
+{% endblock %}
+
+
+
+
+
+
+
+<!--  -->
+
+
+
+
+<!-- all vehicle old code -->
+
+</nav>
+<!------------------------------------------>
+<div class="container mt-4">
+	<h1 style="color:#3d4739;">Different Tpes of Cars</h1>
+  <div class="row">
+		{% for car in cars %}
+			<div class="col-lg-3 col-md-7 col-sm-12 col-xs-12 pb-4">
+				<div class="card shadow-sm">
+          <style>
+            p {text-align: center}
+            </style>
+					<img src="/static/img/{{ car.car_img }}" class="bd-placeholder-img card-img-top" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+					<p class="card-text"><b>{{ car.vehicle_name }} </b></p>
+          <p class="card-text">{{ car.vehicle_type }}</p>
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<a href="/cars/{{ car.car_id }}">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<br>
+
+								</a>
+							</div>
+							<div class="btn-group">
+								{% if session.get('fname') %}
+										<button type="button" id="{{car.car_id}}" class= "btn btn-sm btn-outline-dark fav-button"> <span class="material-icons">
+												</span></button>
+										{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+  </div>
+</div>
+
+
+{% block body %}{% endblock %}
+
+{% block after_body %}{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- login page old -->
+{% extends 'base.html' %}
+{% block title %} Login () {% endblock %}
+
+
+{% block body %}
+
+
+<!--LOGIN-->
+
+<div class="container top-margin">
+    <h1 class="Welcome"> <div id= "welcome">Skyline Car Rental </div></h1>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="login-container">
+                <img class="login-img centered-img heading-margin" src="/static/back_img/vehicle.png">
+                <h2 class="login">Log In</h2>
+            <form action="/login"method= "POST">
+                <div class="mb-3">
+                    <label for="inputfname" class="form-label" style= "color:#8d9aa5">Enter First Name</label>
+                        <input type="fname" name="fname" class= "form-control" id="fname">
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label" style= "color:#8d9aa5">Email address</label>
+                        <input type="email" name="email" class= "form-control" id="email">
+                </div>
+                <div class="mb-3">
+                    <label for="inputpassword" class="form-label" style= "color:#8d9aa5">Password</label>
+                        <input type="password" name="password" class= "form-control" id="password">
+                </div>
+                <button class="btn-submit-three">submit</button>
+                <a class="dropdown-item" style="color:#8d9aa5" href="/register"> No account! </a>
+            </form>
+        </div>
+    </div>
+<div class= "col-lg-4"></div>
+</div>
+<!--/container-->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- registration page old -->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- Javascript  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    {% block head %}
+    <title>
+        {% block title %}Sign Up{% endblock %}
+    </title>
+
+    {% endblock %}
+</head>
+<video id="signup-video" autoplay loop >
+    <source src="/static/signin.mp4" type="video/mp4">
+</video>
+<body>
+
+<!--NAVBAR-->
+    <nav class= "navbad fixed-top-expand-lg navbas-default">
+        <div class="container">
+            <a class="navbar-brand" id="title " href="/">Skyline Car Rental</a>
+            <button class="navbad-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expand="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar ml-auto">
+                    <a class="nav-link" >svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </a>svg> Register </a>
+                    {% if "user_email" in session %}
+                    <a class="nav-link" href="/logout">Logout</a>
+                   {% endif %}
+            </div>
+        </nav>
+
+    <!--Register -->
+    <h1 class=" Welcome"></h1>
+    <div class="container top-margin">
+        <div class="row">
+            <div class="col-log-4"></div>
+            <div class=" col-lo-4">
+            <div class="login-container-two">
+                <img class="login-img heading-margin" src="/static/back_img/vehicle.png">
+
+                <h2 class="register">Register</h2>
+                <form action="/register"method= "POST">
+                    <div class="mb-3">
+                        <label for= "inputfname" class="form-label" style="color:#8d9aa5">First Name </label>
+                        <input type= "text" name= "fname" class="form-control" id="fname">
+                            <div id="fnameHelp" class="form-text"> Enter your first name. </div>
+                    <div>
+                    <div class="mb-3">
+                        <label for= "inputlname" class="form-label" style="color:#8d9aa5">Last Name </label>
+                        <input type= "text" name= "lname" class="form-control" id="lname">
+                            <div id="fnameHelp" class="form-text"> Enter your Last name. </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for= "inpuEEmail" class="form-label" style="color:#8d9aa5">Email address</label>
+                            <input type= "email" name= "email" class="form-control"id="email">
+                                <div id="emailHelp" class="form-text"> Enter a valid email address. </div>
+                    <div>
+                    <div class= "mb-3">
+                        <label for= "inputPassword" class="form-label" style="color:#8d9aa5">Password</label>
+                            <input type= "password" name= "password" class="form-control"id="password">
+                                <div id="passwordHelp" class="form-text"> Password must be 8-10 characters long. </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for= "addr" class="form-label" style="color:#8d9aa5">Address </label>
+                        <input type= "text" name= "address" class="form-control" id="lname">
+                            <div id="fnameHelp" class="form-text"> Enter your Address. </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for= "contact" class="form-label" style="color:#8d9aa5">Contact/Phone </label>
+                        <input type= "text" name= "contact" class="form-control" id="lname">
+                            <div id="fnameHelp" class="form-text"> Enter your Phone. </div>
+                    </div>
+
+                    <button class="btn-submit-three" type="submit">submit</button>
+         </form>
+</div>
+</div>
+
+<div class="col-lg-4"></div>
+</div>
+
+</div> <!--/container-->
+{% block body %}{% endblock %}
+{%block after_body %} {% endblock %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+</html>
+</html>
