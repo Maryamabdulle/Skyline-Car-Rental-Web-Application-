@@ -138,7 +138,7 @@ def signup_user():
     else:
         hash_password = hashlib.sha256(password.encode()).hexdigest()
         crud.create_user(fname, lname, email, hash_password, address, contact)
-        flash(f"Account created! Welcome{fname}.Please log in.", 'success')
+        flash(f"Account created! Welcome {fname}. Please log in.", 'success')
         return redirect("/")
 
 
@@ -228,7 +228,7 @@ def cancel_trip():
         trip.is_canceled = True
         trip.is_active = False
         db.session.commit()
-        flash('trip canceled!', 'success')
+        flash('Trip canceled!', 'success')
         return redirect(url_for('show_user_profile'))
     else:
         flash('you can not cancel the trip before 24 hours!', 'error')
@@ -934,4 +934,4 @@ def handle_email():
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
-    app.run(host="127.0.0.1", debug=True, port=5050)
+    app.run(host="127.0.0.1", debug=True, port=5000)

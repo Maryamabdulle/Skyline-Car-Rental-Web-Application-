@@ -4,9 +4,11 @@
 
 {% block body %}
 
+
   {% include('partials/_question_modal.html') %}
 
   {% include('partials/_rating_modal.html') %}
+  
     <!-- main container -->
     <div class="container mt-4" style="min-height: 100vh; height:100%!important" id="main">
         <div class="row no-gutters">
@@ -122,6 +124,7 @@ $(document).ready(function(){
   });
 });    
 </script>
+
 {% endblock %}
 
 {% block after_body %}
