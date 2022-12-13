@@ -41,7 +41,7 @@
               <div class="form">
 
                   <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Choose a pickup location</label>
+                    <label class="input-group-text" for="inputGroupSelect01">Choose a pick-up location</label>
                     <select required onchange="formPickupField()" class="form-select" id="pickupLoc" name="pickLocation">
                       <option selected disabled>---select---</option>
                       {%for item in data1%}
@@ -53,12 +53,12 @@
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="" id="locationCheckbox">
                     <label class="form-check-label text-light" for="locationCheckbox">
-                      same location for dropoff
+                      same location for drop-off
                     </label>
                   </div>
 
                   <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Choose a Drop off location</label>
+                    <label class="input-group-text" for="inputGroupSelect01">Choose a Drop-off location</label>
                     <select onchange="formDropoffField()" class="form-select" id="dropoffLoc" name="dropLocation">
                       <option selected disabled>---select---</option>
                       {%for item in data2%}
@@ -168,13 +168,13 @@
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text" id="pick-Time">Choose time for car pickup</span>
+                <span class="input-group-text" id="pick-Time">Choose time for car pick-up</span>
                 <input class="form-control" type="time" id="pickTime" name="pick_up_time"
               min="09:00" max="19:00" required>
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text" id="drop-Time">Choose time for car dropoff</span>
+                <span class="input-group-text" id="drop-Time">Choose time for car drop-off</span>
                 <input type="time" id="dropTime" name="drop_of_time"
               min="09:00" max="19:00" class="form-control" required>
               </div>
@@ -236,10 +236,10 @@
                       <div class="card">
                           <div class="card-body">
                             <h5>Car: <span id="i-carName" class="text-muted" style="font-size: 24px;"></span></h5>
-                            <h5>Pick Up Location: <span id="i-pickLoc" class="text-muted" style="font-size: 24px;"></span></h5>
-                            <h5>Drop Off Location: <span id="i-dropLoc" class="text-muted" style="font-size: 24px;"></span></h5>
-                            <h5>Pick Up Date/time: <span id="i-pickTime" class="text-muted" style="font-size: 24px;"></span></h5>
-                            <h5>Drop Off Date/time: <span id="i-dropTime" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Pick-Up Location: <span id="i-pickLoc" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Drop-Off Location: <span id="i-dropLoc" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Pick-Up Date/time: <span id="i-pickTime" class="text-muted" style="font-size: 24px;"></span></h5>
+                            <h5>Drop-Off Date/time: <span id="i-dropTime" class="text-muted" style="font-size: 24px;"></span></h5>
                             <h5>Day(s): <span id="i-days" class="text-muted" style="font-size: 24px;"></span></h5>
                             <h5>Charge/Day: <span id="i-chargeDays" class="text-muted" style="font-size: 24px;"></span></h5>
                             <br>
@@ -397,7 +397,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
 
     // checkbox event
     locationCheckbox.change(function() {
-      const pickupLocVal = $('#pickupLoc').val();
+      pickupLocVal = $('#pickupLoc').val();
       if(this.checked && pickupLocVal != null) {
         $('#dropoffLoc').append( $('<option>', {value: pickupLocVal, text: pickupLocVal}).prop('selected', true) );
         $('#dropoffLoc').change();
@@ -505,8 +505,8 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
 
 
 
-      const pickupLocVal = $('#pickupLoc').val();
-      const dropoffLocVal = $('#dropoffLoc').val();
+      let pickupLocVal = $('#pickupLoc').val();
+      let dropoffLocVal = $('#dropoffLoc').val();
 
       if (pickupLocVal == null || dropoffLocVal == null){
         alert('Please select both locations');
@@ -529,8 +529,8 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
       page2.removeClass('hide');
       carBtn.prop('disabled', false);
 
-      const pickupLocVal = $('#pickupLoc').val();
-      const dropoffLocVal = $('#dropoffLoc').val();
+      pickupLocVal = $('#pickupLoc').val();
+      dropoffLocVal = $('#dropoffLoc').val();
 
       if (pickupLocVal == null || dropoffLocVal == null){
         alert('please select both locations');
@@ -538,7 +538,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
       }
 
       // add to localstorage ---> locations
-      let booking = {
+        booking = {
         step: 1,
         pickLoc: pickupLocVal,
         dropLoc: dropoffLocVal
@@ -566,7 +566,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
 
 
         // get and set the updated booking
-        let booking = JSON.parse(localStorage.getItem('booking'));
+        booking = JSON.parse(localStorage.getItem('booking'));
         booking['carId'] = carId;
         booking['carName'] = carName;
         booking['step'] = 2;
@@ -604,7 +604,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
         return false;
       }
 
-      let booking = JSON.parse(localStorage.getItem('booking'));
+      booking = JSON.parse(localStorage.getItem('booking'));
       console.log(booking);
 
 
@@ -674,7 +674,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
 
     // paylater checkbox change
     $('#payLaterCheckbox').change(function() {
-      let booking = JSON.parse(localStorage.getItem('booking'));
+      booking = JSON.parse(localStorage.getItem('booking'));
 
       if(this.checked) {
         booking['payLater'] = true;
@@ -695,7 +695,7 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
       const cardCode = $('#cardCode').val();
       const cardExp = $('#cardExp').val();
 
-      let booking = JSON.parse(localStorage.getItem('booking'));
+        booking = JSON.parse(localStorage.getItem('booking'));
 
       if (booking['payLater'] == true){
         booking['step'] = 4;
@@ -769,14 +769,3 @@ src="https://maps.googleapis.com/maps/api/js?key={{ apikey }}&callback=initMap&l
 
 {% endblock %}
 
-{% endblock %}
-
-{% block after_body %}
-
-{% endblock %}
-
-{% endblock %}
-
-{% block after_body %}
-
-{% endblock %}

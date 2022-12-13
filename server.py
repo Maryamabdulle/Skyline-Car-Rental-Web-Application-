@@ -102,8 +102,9 @@ def process_login():
     hash_password = hashlib.sha256(password.encode()).hexdigest()
     user=crud.get_user_by_email(email)
     print(user)
-    if not user or user.password != hash_password:
-        flash ("The email or password you entered was incorrect.", 'error')
+    fname=request.form.get("fname")
+    if not user or user.password != hash_password or fname!=user.fname:
+        flash ("The email, password, or the name you entered was incorrect.", 'error')
         return redirect("/")
     else:
         session["user_email"]= user.email
