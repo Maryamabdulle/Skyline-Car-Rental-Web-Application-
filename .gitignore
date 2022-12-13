@@ -1,3 +1,4 @@
 secrets.sh
 __pycache__
 tmp.html 
+.DS_Store
