@@ -2,3 +2,6 @@ secrets.sh
 __pycache__
 tmp.html 
 .DS_Store
+*.mp4
+*.mov
+env
