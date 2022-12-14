@@ -4,10 +4,8 @@
         <th scope="col">Car</th>
         <th scope="col">Pickup Location</th>
         <th scope="col">Dropoff Location</th>
-        <th scope="col">Pickup Date</th>
-        <th scope="col">Dropoff Date</th>
-        <th scope="col">Pick-up Time</th>
-        <th scope="col">Drop-off Time</th>
+        <th scope="col">Pickup Date & Time </th>
+        <th scope="col">Dropoff Date & Time </th>
         <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -17,8 +15,7 @@
             <td>{{ trip.car.vehicle_name }}</td>
             <td>{{ trip.pick_up_location|truncate(40) }}</td>
             <td>{{ trip.drop_of_location|truncate(40) }}</td>
-            <td>{{ trip.pick_up_date }}</td>
-            <td>{{ trip.drop_of_date }}</td>
+            
             <td>{{ trip.pick_up_time }}</td>
             <td>{{ trip.drop_of_time }}</td>
             <td>

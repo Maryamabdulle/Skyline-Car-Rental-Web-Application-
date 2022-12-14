@@ -15,7 +15,7 @@ class FlaskTestBasic(TestCase):
         #Show Flask errors that happen during tests
         app.config['TESTING']= True
         # connect_to_db(app, "postgresql:///testdb")
-        connect_to_db(app, "sqlite://")
+        connect_to_db(app, "postgresql://testdb")
         app.config['SECRET_KEY']= 'carsaregreat'
         #Get the Flask test client
         self.client= app.test_client()
@@ -30,25 +30,25 @@ class FlaskTestBasic(TestCase):
     def test_homepage(self):
         """Test homepage route."""
 
-        r = requests.get('http://localhost:5050/')
+        r = requests.get('http://localhost:5000/')
         self.assertIn(b"Rent a Car Online Today", r.content)
 
 
     def test_car_title(self):
         """Test all_vehcile page. Make sure name of the car is showing."""
 
-        r = requests.get('http://localhost:5050/cars')
+        r = requests.get('http://localhost:5000/cars')
         self.assertIn(b"Ford Fiesta", r.content)
         self.assertIn(b"Mazda CX-5",r.content)
 
     def test_car_sort(self):
         """Test car sort route."""
-        r = requests.get('http://localhost:5050/vehicle-sort?sort=price')
+        r = requests.get('http://localhost:5000/vehicle-sort?sort=price')
         self.assertEqual(r.status_code, 200)
         self.assertIn(b'Chevrolet Traverse', r.content)
 
     def test_car_cat(self):
-        r = requests.get('http://localhost:5050/cars?cat=suv')
+        r = requests.get('http://localhost:5000/cars?cat=suv')
         self.assertEqual(r.status_code, 200)
         self.assertIn(b'Chevrolet Traverse', r.content)
 
@@ -58,7 +58,7 @@ class FlaskTestBasic(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_page_not_found(self):
-        r = requests.get('http://localhost:5050/some-page-that-dont-exists')
+        r = requests.get('http://localhost:5000/some-page-that-dont-exists')
         self.assertEqual(r.status_code, 404)
         pass
 

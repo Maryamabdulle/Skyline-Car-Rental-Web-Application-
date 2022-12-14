@@ -232,7 +232,7 @@ def cancel_trip():
         flash('Trip canceled!', 'success')
         return redirect(url_for('show_user_profile'))
     else:
-        flash('you can not cancel the trip before 24 hours!', 'error')
+        flash('You can not cancel the trip before 24 hours!', 'error')
         return redirect(url_for('show_user_profile'))
 
 
@@ -935,4 +935,4 @@ def handle_email():
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
-    app.run(host="127.0.0.1", debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=True)
