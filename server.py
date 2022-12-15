@@ -264,9 +264,9 @@ def return_vehicle():
         rating = Rate(score=score, rate=review, trip_id=trip.trip_id, user_id=user.user_id, car_id=car_id)
         db.session.add(rating)
         db.session.commit()
-        flash('The car Returned sucessfully with your review!', 'success')
+        flash('The car Returned sucessfully with your review! Thank you', 'success')
     else:
-        flash('Return sucessfully!', 'success')
+        flash('The car has been returned successfully! Thank you', 'success')
 
 
     return redirect(url_for('show_user_profile'))
@@ -566,7 +566,7 @@ def validate_dates():
     # check form dates
     # pickup date should be less than dropoff date
     if not compare_dates(pick_up_date, drop_of_date):
-        # flash('pickup date cannot be greater than drop off date', 'error')
+        # flash('Pickup date cannot be greater than drop off date', 'error')
         return Response("cmpDate", status=400, mimetype='text/html')
 
     # get old trip dates for this car
