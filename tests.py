@@ -23,48 +23,41 @@ class FlaskTestBasic(TestCase):
                 sess['user_id']=1
         db.create_all()
         test_data()
-# def test_homepage(self):
-    #     """Test homepage route."""
-
-    #     r = requests.get('http://localhost:5000/')
-    #     self.assertIn(b"Rent a Car Online Today", r.content)
-
-
 
     def test_homepage(self):
         """Test homepage route."""
 
-        result = self.client.get ("/")
-        self.assertIn(b"Rent a Car Online Today", result.data)
+        r = self.client.get ("/")
+        self.assertIn(b"Rent a Car Online Today", r.data)
 
 
-    # def test_car_title(self):
-    #     """Test all_vehcile page. Make sure name of the car is showing."""
+    def test_car_title(self):
+        """Test all_vehcile page. Make sure name of the car is showing."""
 
-    #     r = requests.get('http://localhost:5000/cars')
-    #     self.assertIn(b"Ford Fiesta", r.content)
-    #     self.assertIn(b"Mazda CX-5",r.content)
+        r = requests.get('http://localhost:5000/cars')
+        self.assertIn(b"Ford Fiesta", r.content)
+        self.assertIn(b"Mazda CX-5",r.content )
 
-    # def test_car_sort(self):
-    #     """Test car sort route."""
-    #     r = requests.get('http://localhost:5000/vehicle-sort?sort=price')
-    #     self.assertEqual(r.status_code, 200)
-    #     self.assertIn(b'Chevrolet Traverse', r.content)
+    def test_car_sort(self):
+        """Test car sort route."""
+        r = requests.get('http://localhost:5000/vehicle-sort?sort=price')
+        self.assertEqual(r.status_code, 200)
+        self.assertIn(b'Chevrolet Traverse', r.content)
 
-    # def test_car_cat(self):
-    #     r = requests.get('http://localhost:5000/cars?cat=suv')
-    #     self.assertEqual(r.status_code, 200)
-    #     self.assertIn(b'Chevrolet Traverse', r.content)
+    def test_car_cat(self):
+        r = requests.get('http://localhost:5000/cars?cat=suv')
+        self.assertEqual(r.status_code, 200)
+        self.assertIn(b'Chevrolet Traverse', r.content)
 
     def test_all_cars(self):
         """Test all cars route."""
         response=self.client.get('/cars', content_type="html/text")
         self.assertEqual(response.status_code, 200)
 
-    # def test_page_not_found(self):
-    #     r = requests.get('http://localhost:5000/some-page-that-dont-exists')
-    #     self.assertEqual(r.status_code, 404)
-    #     pass
+    def test_page_not_found(self):
+        r = requests.get('http://localhost:5000/some-page-that-dont-exists')
+        self.assertEqual(r.status_code, 404)
+        pass
 
     def test_insert_user(self):
         password = 'testing'
@@ -104,10 +97,10 @@ class FlaskTestBasic(TestCase):
                 db.session.commit()
                 data='ok'
         except:
-            data = 'email already exists'
+            data = 'Email already exists'
         pass
 
-        self.assertEqual('email already exists', data)
+        self.assertEqual('Email already exists', data)
 
 
     def test_insert_car(self):
@@ -132,38 +125,38 @@ class FlaskTestBasic(TestCase):
         self.assertEqual(len(car_out), 1)
 
 
-    # def test_add_favourite(self):
-    #     fav_in = Favorite(car_id=1, user_id=1)
-    #     db.session.add(fav_in)
-    #     db.session.commit()
+    def test_add_favourite(self):
+        fav_in = Favorite(car_id=1, user_id=1)
+        db.session.add(fav_in)
+        db.session.commit()
 
-        # self.assertEqual(fav_in.favorites_id, 1)
-        # pass
+        self.assertEqual(fav_in.favorites_id, 1)
+        pass
 
 
-    # def test_fav_car(self):
-    #     fav_in = Favorite(car_id=1, user_id=1)
-    #     db.session.add(fav_in)
-    #     db.session.commit()
+    def test_fav_car(self):
+        fav_in = Favorite(car_id=1, user_id=1)
+        db.session.add(fav_in)
+        db.session.commit()
 
-        # fav_out = Favorite.query.filter_by(user_id=1, car_id=1).all()
-        # self.assertEqual(len(fav_out), 1)
-        # pass
+        fav_out = Favorite.query.filter_by(user_id=1, car_id=1).all()
+        self.assertEqual(len(fav_out), 1)
+        pass
 
-    # def test_car_not_favourite(self):
-    #     car_id = 99
-    #     user_id = 99
-    #     fav = Favorite.query.filter_by(car_id=car_id, user_id=user_id).all()
-    #     self.assertEqual(len(fav), 0)
+    def test_car_not_favourite(self):
+        car_id = 99
+        user_id = 99
+        fav = Favorite.query.filter_by(car_id=car_id, user_id=user_id).all()
+        self.assertEqual(len(fav), 0)
 
-    # def test_rated_car(self):
-    #     rate_in = Rate(car_id=1, user_id=1, score=5, rate='nice experience', trip_id=1)
-    #     db.session.add(rate_in)
-    #     db.session.commit()
+    def test_rated_car(self):
+        rate_in = Rate(car_id=1, user_id=1, score=5, rate='Nice experience', trip_id=1)
+        db.session.add(rate_in)
+        db.session.commit()
 
-        # rate_out = Rate.query.filter_by(user_id=1, car_id=1).all()
-        # self.assertEqual(len(rate_out), 1)
-        # pass
+        rate_out = Rate.query.filter_by(user_id=1, car_id=1).all()
+        self.assertEqual(len(rate_out), 1)
+        pass
 
     def test_none_rated_car(self):
         car_id = 99
@@ -178,8 +171,7 @@ class FlaskTestBasic(TestCase):
         """Drop data at tend of every test."""
 
         db.session.remove()
-        db.drop_all()
-        db.engine.dispose()
+
 
 
 
