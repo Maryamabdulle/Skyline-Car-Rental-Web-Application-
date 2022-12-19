@@ -1,29 +1,41 @@
-## Table of Contents
-*[Project Description](#project-description)
-*[About Me](#about-me)
-*[Tech Stack](#tech-stack)
-*[Python Libraries Used](#python-libraries-used)
-*[Roadmap](#roadmap)
-*[Project Video](#project-video)
+
+![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/maryamabdulle/Desktop/untitled%20folder/Title.png?version%3D1671138052818)
+
+
+## Table of Contents 💻
+
+* [Overview](#overview)
+* [Project Demo Video](#project-demo-video)
+* [About Me](#about-me)
+* [Tech Stack](#tech-stack)
+* [Python Libraries Used](#python-libraries-used)
+* [Roadmap](#roadmap)
+
+
  
- 
-## <a name= "overview><a>Overview 🌼
- 
+## <a name= "overview><a>Overview 🚗
+
 Skyline car Rental is a full-stack web application that allows users to browse a variety of cars and their categories to learn about it. Users can utilize the filter method to sort by price, mileage, and the number of seats and select which car categories they want the filters to apply to from the four car categories such as ( SUVs, Small to full size, Luxury & Convertibles, or all All cars). Users are able to create an account or login to book a car online with the options of paying now or later. It lets users know when the selected car is not available. Users can select pick-up and drop-off locations and can view the full details of the locations. Users can also leave a review and rating for the car after it is returned and all users can see reviews of the cars. Users can choose to return without review. Users can favorite cars which will then show up on the user’s favorites page. Users can visit their profile page and also see all current, past, and future reservations they have made. Users can always cancel a reservation on the profile page, but I implemented a 24-hour cancellation restriction which prohibits the cancellation within 24 hours of their reservation time. I created a contact option for users to reach out to me.
  
- 
+
+### :video_camera: [Project Demo Video] (https://www.youtube.com/watch?v=hs9bWSQ_A2w) 📹
+
+## <a name= "about-me><a>About Me ![Alt text](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/lg/307/person-with-headscarf_medium-skin-tone_1f9d5-1f3fd_1f3fd.png)
+
+- Maryam Abdulle is a software Engineer and enjoys problem solving.
+
+
 ## <a name= "tech-stack><a>Tech Stack 📚
  
- 
-**Backend**: Python(Flask), PostgreSQL, SQLAlchemy
-**Frontend**: AJAX, Bootstrap, CSS, HTML, Jinja2, Javascript(AJAX, JSON), jQuery
-**APIs**: Google Maps API
+**Backend**: Python(Flask), PostgreSQL, SQLAlchemy <br/>
+**Frontend**: AJAX, Bootstrap, CSS, HTML, Jinja2, Javascript(AJAX, JSON), jQuery <br/>
+**APIs**: Google Maps API <br/>
  
 ## <a name="python-libraries-used"><a>Python libraries Used 💻
  
-- Flask Bootsrap-style
-- Datetime - Date and Time
-- Hashlib- Password security
+- Flask Bootsrap-style <br/>
+- Datetime - Date and Time <br/>
+- Hashlib- Password security <br/>
  
  
 ## <a name="roadmap"><a>Roadmap 📈
@@ -50,18 +62,181 @@ Skyline car Rental is a full-stack web application that allows users to browse a
  
  
 #### 3.0 (Future iterations):
-- Ceate user authentication so users can retrieve forgotten passwords and create new passwords
-- Ading an admin page so I can add more cars and more locations easily on the admin side
+- Create user authentication so users can retrieve forgotten passwords and create new passwords
+- Adding an admin page so I can add more cars and more locations easily on the admin side
 - Add functionality that lets users book directly with other rental car companies through Skyline Car Rental
+
  
-## <a name= "features:><a>Features :computer:
+## <a name= "features:><a>Features 🌼
  
+Car Carsouel page: <br>
+
+![Hnet-image (1)] ()
+
+
+
+
+
+
+
+
 Hompe page: <br>
 ![hnet-image(1)](note to myself post the video here of the homepage)<br>
  
  
  
+
+
+All Cars page page: <br>
+
+
+
+
+Utalizing the Sort by/filter Method <br>
+
+
+Dropdown to select Categories <br>
+Register or Login <br>
+
+Favorite to save to favorites page <br>
+
+
+Selecting locations and Google Maps with geocoding <br>
+
+Selecting a car to book <br>
+
+Validating if dates has been already book or incorrect <br>
+
+Confirmation details page with payment options <br>
+
+Profile Page <br>
+
+Canceling reservation successfully <br>
+
+Unable to cancel reservation within 24 hours before the pick up time of the car <br>
+
+Return the car without a rate and a review <br>
+
+Return the car with a rate and a review  <br>
+
+Displaying rate and review with jinja2 templates <br>
+
+Contact Page <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## <a name= "installation:><a>Installation
  
+ ### Requirments 🖊️
  
+ * Install requirements.txt
+ * Python 3
+ * PostgreSQL
+
+Steps to run application on your device:
+
+Steps 1- Clone this repository:
+```
+$ git clone https://github.com/Maryamabdulle/Skyline-Car-Rental-Web-Application-.git
+```
+
+Step 2- Create and activate a virtual environment:
+```
+ $ pip3 install virtualenv
+ $ virtualenv env
+ $ source env/bin/activate
+ ```
+
+ Step 3- Install dependencies:
+ ```
+ $ pip3 install -r requirements.txt
+ ```
+ 
+
+ Step-4 Install Flask Mail:
+
+ ```
+ $ pip install Flask-Mail
+
+ ````
+
+ Step 5- create a secrets.sh file to save secret keys:
+ ```
+ export "API" = "youcanputhereyourGooglemapsapi" 
+ ```
+
+Step- 6 - Create and use app passwords to access Google Account
+ - Create sender and receiver emails to add to secret.sh.sh file 
+ - For the sender email, turn on 2-step Verification on your account to create and use app passwords
+ - Upon successful creation of the app password, a 16-character code in the yellow bar on your device should be generated 
+ - Following the Sender email you created, add this code to your secrets.sh file 
+ - For more detail on creating and using app passwords, feel free to read the step-by-step instructions of creating and turning on 2-step verification for your account 
+
+### [https://support.google.com/mail/answer/185833?hl=en-GB]
+
+step-7 Add both receiver and sender emails and 16-character code into secrets.sh:
+```
+export= "EMAIL"= "emailaddress";export "PASS"= "16-charactercode"
+export= "RECIEVER"="emailaddress"
+
+ Step 8- Activate the secrets.sh file in terminal:
+ ```
+ (env) $ source secrets.sh
+ ```
+
+ Step 9- Create the database:
+ ```
+ (env) $ createdb cars
+ (env) $ psql cars < cars.sql>
+```
+
+Step 10- Seed the database:
+```
+(env) $ python3 model.py
+(env) $ python3 seed_database.py
+```
+
+Step 11- Run the server:
+```
+(env) $ python3 server.py
+```
+
+Step 12- To view locally, Type on local browser:
+```localhost:5000 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

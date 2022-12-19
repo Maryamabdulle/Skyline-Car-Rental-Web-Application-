@@ -229,10 +229,10 @@ def cancel_trip():
         trip.is_canceled = True
         trip.is_active = False
         db.session.commit()
-        flash('Trip canceled!', 'success')
+        flash('Reservation canceled!', 'success')
         return redirect(url_for('show_user_profile'))
     else:
-        flash('You can not cancel the trip before 24 hours!', 'error')
+        flash('You can not cancel the reservation before 24 hours!', 'error')
         return redirect(url_for('show_user_profile'))
 
 
