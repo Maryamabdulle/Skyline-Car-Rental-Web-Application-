@@ -21,7 +21,7 @@
 Skyline car Rental is a full-stack web application that allows users to browse a variety of cars and their categories to learn about it. Users can utilize the filter method to sort by price, mileage, and the number of seats and select which car categories they want the filters to apply to from the four car categories such as ( SUVs, Small to full size, Luxury & Convertibles, or all All cars). Users are able to create an account or login to book a car online with the options of paying now or later. It lets users know when the selected car is not available. Users can select pick-up and drop-off locations and can view the full details of the locations. Users can also leave a review and rating for the car after it is returned and all users can see reviews of the cars. Users can choose to return without review. Users can favorite cars which will then show up on the user’s favorites page. Users can visit their profile page and also see all current, past, and future reservations they have made. Users can always cancel a reservation on the profile page, but I implemented a 24-hour cancellation restriction which prohibits the cancellation within 24 hours of their reservation time. I created a contact option for users to reach out to me.
  
 
-### 📹 [Project Demo Video] [](https://www.youtube.com/watch?v=hs9bWSQ_A2w)
+### 📹 Project Demo Video [https://www.youtube.com/watch?v=hs9bWSQ_A2w]
 
 ## <a name= "about-me"></a>About Me 🧕🏽
 
