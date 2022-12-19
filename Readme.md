@@ -1,5 +1,5 @@
 
-![Alt text]
+!(<img width="1007" alt="Screen Shot 2022-12-19 at 12 28 42 AM" src="https://user-images.githubusercontent.com/114389244/208370848-8e50062b-d74a-48e1-8b14-5ade7428c8ce.png">)
 
 
 ## Table of Contents 📖 
@@ -66,27 +66,19 @@ Maryam Abdulle is a software Engineer and enjoys problem solving.
  
 ## <a name= "features"></a>Features 🌼
  
-Car Carsouel page: <br>
-![Hnet-image (1)](https://user-images.githubusercontent.com/114389244/208368302-fca5d53d-6bee-4094-8ca8-48e712966ef8.mp4
-)
-
-
-
-
-
-
-
+Carousel: <br>
+![Hnet-image (1)](https://user-images.githubusercontent.com/114389244/208368302-fca5d53d-6bee-4094-8ca8-48e712966ef8.mp4)
 
 
 Hompe page: <br>
-![hnet-image(1)](note to myself post the video here of the homepage)<br>
+![hnet-image(2](https://user-images.githubusercontent.com/114389244/208369734-fe0b2b13-2f4e-4aa3-8c6b-73eb4d8f4a4b.mp4)<br>
  
  
  
 
 
 All Cars page page: <br>
-
+![hnet-image(3](https://user-images.githubusercontent.com/114389244/208370639-def74380-739d-420a-a651-92bf14b9d0ea.mp4) <br>
 
 
 
@@ -94,6 +86,7 @@ Utalizing the Sort by/filter Method <br>
 
 
 Dropdown to select Categories <br>
+
 Register or Login <br>
 
 Favorite to save to favorites page <br>
