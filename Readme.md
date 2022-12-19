@@ -215,28 +215,11 @@ Step 11- Run the server:
 
 Step 12- To view locally, Type on local browser:
 ```
-localhost:5000 
+localhost:5000
 
 
 
 ## <a name="future-iterations"></a>Future Iterations 💥
-
 - Create user authentication so users can retrieve forgotten passwords and create new passwords
 - Adding an admin page so I can add more cars and more locations easily on the admin side
 - Add functionality that lets users book directly with other rental car companies through Skyline Car Rental
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
