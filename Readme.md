@@ -183,13 +183,11 @@ Step 2- Create and activate a virtual environment:
  ```
 
 Step- 6 - Create and use app passwords to access Google Account
+
  - Create sender and receiver emails to add to secret.sh.sh file 
  - For the sender email, turn on 2-step Verification on your account to create and use app passwords
  - Upon successful creation of the app password, a 16-character code in the yellow bar on your device should be generated 
  - Following the Sender email you created, add this code to your secrets.sh file 
- - For more detail on creating and using app passwords, feel free to read the step-by-step instructions of creating and turning on 2-step verification for your account 
-
-### [https://support.google.com/mail/answer/185833?hl=en-GB]
 
 step-7 Add both receiver and sender emails and 16-character code into secrets.sh:
 ```
