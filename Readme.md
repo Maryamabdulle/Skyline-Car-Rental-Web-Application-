@@ -10,6 +10,9 @@
 * [Tech Stack](#tech-stack)
 * [Python Libraries Used](#python-libraries-used)
 * [Roadmap](#roadmap)
+* [Features](#features)
+* [Installation](#installation)
+* [Future Iterations](#future-iterations)
 
 
  
@@ -59,12 +62,6 @@ Maryam Abdulle is a software Engineer and enjoys problem solving.
 - Users have access to either pay now or pay later options when booking a car
 - Users can Contact me directly by sending a message from the contact me page
 - Users can visit the About us page to get more information about Skyline Car Rental
- 
- 
-#### 3.0 (Future iterations):
-- Create user authentication so users can retrieve forgotten passwords and create new passwords
-- Adding an admin page so I can add more cars and more locations easily on the admin side
-- Add functionality that lets users book directly with other rental car companies through Skyline Car Rental
 
  
 ## <a name= "features"></a>Features 🌼
@@ -219,10 +216,14 @@ Step 11- Run the server:
 Step 12- To view locally, Type on local browser:
 ```
 localhost:5000 
-```
 
 
 
+## <a name="future-iterations"></a>Future Iterations 💥
+
+- Create user authentication so users can retrieve forgotten passwords and create new passwords
+- Adding an admin page so I can add more cars and more locations easily on the admin side
+- Add functionality that lets users book directly with other rental car companies through Skyline Car Rental
 
 
 
