@@ -147,7 +147,7 @@ Contact Page <br>
  * Python 3
  * PostgreSQL
 
-Steps to run application on your device.
+To run this web application locally on your device, follow the below steps.
 
 Steps 1- Clone this repository:
 ```
