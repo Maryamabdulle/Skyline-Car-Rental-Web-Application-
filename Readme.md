@@ -164,19 +164,19 @@ Step 2- Create and activate a virtual environment:
  $ source env/bin/activate
  ```
 
- Step 3- Install dependencies:
+Step 3- Install dependencies:
  ```
  $ pip3 install -r requirements.txt
  ```
  
 
- Step 4- Install Flask Mail:
+Step 4- Install Flask Mail:
 
  ```
  $ pip install Flask-Mail
  ````
 
- Step 5- create a secrets.sh file to save secret keys:
+Step 5- create a secrets.sh file to save secret keys:
  ```
  export "API" = "youcanputhereyourGooglemapsapi" 
  ```
@@ -188,18 +188,18 @@ Step 6- Create and use app passwords to access Google Account:
  - Upon successful creation of the app password, a 16-character code in the yellow bar on your device should be generated 
  - Following the Sender email you created, add this code to your secrets.sh file 
 
-step 7- Add both receiver and sender emails and 16-character code into secrets.sh:
+Step 7- Add both receiver and sender emails and 16-character code into secrets.sh:
 ```
 export= "EMAIL"= "emailaddress";export "PASS"= "16-charactercode"
 export= "RECIEVER"="emailaddress"
 ```
 
- Step 8- Activate the secrets.sh file in terminal:
+Step 8- Activate the secrets.sh file in terminal:
  ```
  (env) $ source secrets.sh
  ```
 
- Step 9- Create the database:
+Step 9- Create the database:
  ```
  (env) $ createdb cars
  (env) $ psql cars < cars.sql>
