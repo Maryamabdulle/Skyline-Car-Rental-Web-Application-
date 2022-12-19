@@ -70,19 +70,19 @@ Carousel <br>
 
 ![Hnet-image (1)](https://user-images.githubusercontent.com/114389244/208368302-fca5d53d-6bee-4094-8ca8-48e712966ef8.mp4)
 
-Hompe page <br>
+### Hompe page: <br>
 
 ![hnet-image(2](https://user-images.githubusercontent.com/114389244/208369734-fe0b2b13-2f4e-4aa3-8c6b-73eb4d8f4a4b.mp4)<br>
  
-All Cars page page <br>
+### All Cars page page: <br>
 
 ![hnet-image(3](https://user-images.githubusercontent.com/114389244/208370639-def74380-739d-420a-a651-92bf14b9d0ea.mp4) <br>
 
-Utilizing the Sort by/filter Method <br>
+### Utilizing the Sort by/filter Method: <br>
 
 ![hnet-image(4](https://user-images.githubusercontent.com/114389244/208371612-295505aa-9c32-491d-ba12-c9a6d73d81e8.mp4) <br>
 
-Dropdown to select a Category <br> 
+### Dropdown to select a Category: <br> 
 
 ![hnet-image(5](https://user-images.githubusercontent.com/114389244/208372023-bebbe267-07cf-4a85-b944-da9bdf8eacc6.mp4) <br>
 
