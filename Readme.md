@@ -22,7 +22,7 @@ Skyline car Rental is a full-stack web application that allows users to browse a
 
 ## <a name= "about-me"></a>About Me 🧕🏾
 
-- Maryam Abdulle is a software Engineer and enjoys problem solving.
+Maryam Abdulle is a software Engineer and enjoys problem solving.
 
 
 ## <a name= "tech-stack"></a>Tech Stack 📚
@@ -33,9 +33,9 @@ Skyline car Rental is a full-stack web application that allows users to browse a
  
 ## <a name="python-libraries-used"></a>Python libraries Used 💻
  
-- Flask Bootsrap-style <br/>
+- Flask Bootsrap - style <br/>
 - Datetime - Date and Time <br/>
-- Hashlib- Password security <br/>
+- Hashlib - Password security <br/>
  
  
 ## <a name="roadmap"></a>Roadmap 📈
@@ -150,7 +150,7 @@ Contact Page <br>
  * Python 3
  * PostgreSQL
 
-Steps to run application on your device:
+Steps to run application on your device.
 
 Steps 1- Clone this repository:
 ```
@@ -170,7 +170,7 @@ Step 2- Create and activate a virtual environment:
  ```
  
 
- Step-4 Install Flask Mail:
+ Step 4- Install Flask Mail:
 
  ```
  $ pip install Flask-Mail
@@ -181,14 +181,14 @@ Step 2- Create and activate a virtual environment:
  export "API" = "youcanputhereyourGooglemapsapi" 
  ```
 
-Step- 6 - Create and use app passwords to access Google Account:
+Step 6- Create and use app passwords to access Google Account:
 
  - Create sender and receiver emails to add to secret.sh.sh file 
  - For the sender email, turn on 2-step Verification on your account to create and use app passwords
  - Upon successful creation of the app password, a 16-character code in the yellow bar on your device should be generated 
  - Following the Sender email you created, add this code to your secrets.sh file 
 
-step-7 Add both receiver and sender emails and 16-character code into secrets.sh:
+step 7- Add both receiver and sender emails and 16-character code into secrets.sh:
 ```
 export= "EMAIL"= "emailaddress";export "PASS"= "16-charactercode"
 export= "RECIEVER"="emailaddress"
