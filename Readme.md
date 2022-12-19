@@ -66,7 +66,7 @@ Maryam Abdulle is a software Engineer and enjoys problem solving.
  
 ## <a name= "features"></a>Features 🌼
  
-Carousel <br>
+### Carousel <br>
 
 ![Hnet-image (1)](https://user-images.githubusercontent.com/114389244/208368302-fca5d53d-6bee-4094-8ca8-48e712966ef8.mp4)
 
@@ -86,34 +86,34 @@ Carousel <br>
 
 ![hnet-image(5](https://user-images.githubusercontent.com/114389244/208372023-bebbe267-07cf-4a85-b944-da9bdf8eacc6.mp4) <br>
 
-Register or Login <br>
+### Register or Login: <br>
 
 ![hnet-image(6](https://user-images.githubusercontent.com/114389244/208373308-c98dd59f-f357-4978-83ab-480ab7dc14ed.mp4) <br>
 
-Favorite to save to favorites page <br>
+### Favorite to save to favorites page: <br>
 ![hnet-image(7](https://user-images.githubusercontent.com/114389244/208468239-b5394d48-0e6c-4c6f-a4e3-a098ada350bf.mp4) <br>
 
-Selecting locations and Google Maps with geocoding & selecting a car to book<br>
+### Selecting locations and Google Maps with geocoding & selecting a car to book: <br>
 ![hnet-image(8](https://user-images.githubusercontent.com/114389244/208470533-d771d922-6456-4c0b-8e5b-46ebb839bb51.mp4) <br>
 
-Validating if dates has been already book or incorrect & payment options<br>
+### Validating if dates has been already book or incorrect & payment options: <br>
 ![hnet-image(9](https://user-images.githubusercontent.com/114389244/208472412-27e40d06-b90e-45c8-9343-e6a00634f904.mp4) <br>
 
-Profile Page <br>
+### Profile Page: <br>
 ![hnet-image(10](https://user-images.githubusercontent.com/114389244/208472773-f5628ab4-f248-474c-8fe4-65d63cb83202.mp4) <br>
 
 
-Canceling reservations both successfully & restrictions <br>
+### Canceling reservations both successfully & restrictions: <br>
 ![hnet-image(11](https://user-images.githubusercontent.com/114389244/208473132-83515826-8b63-437b-9c30-9b744bd1618e.mp4) <br>
 
-Return the car with a rate and a review  <br>
+### Return the car with a rate and a review:  <br>
 
 ![hnet-image(12]( https://user-images.githubusercontent.com/114389244/208473645-26ce55cf-54c8-49bc-906b-a3f0929a6b96.mp4) <br>
 
-Displaying rate and review with jinja2 templates <br>
+### Displaying rate and review with jinja2 templates: <br>
 ![hnet-image(13](https://user-images.githubusercontent.com/114389244/208474153-edd0d169-3a8a-4a92-8bfe-1a4f7abd3f3d.mp4) <br>
 
-Contact Page <br>
+### Contact Page: <br>
 ![hnet-image(14](https://user-images.githubusercontent.com/114389244/208474639-72e0c86b-4032-4990-b971-732b1d09ae31.mp4) <br>
 
 
