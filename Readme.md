@@ -21,7 +21,7 @@
 Skyline car Rental is a full-stack web application that allows users to browse a variety of cars and their categories to learn about it. Users can utilize the filter method to sort by price, mileage, and the number of seats and select which car categories they want the filters to apply to from the four car categories such as ( SUVs, Small to full size, Luxury & Convertibles, or all All cars). Users are able to create an account or login to book a car online with the options of paying now or later. It lets users know when the selected car is not available. Users can select pick-up and drop-off locations and can view the full details of the locations. Users can also leave a review and rating for the car after it is returned and all users can see reviews of the cars. Users can choose to return without review. Users can favorite cars which will then show up on the user’s favorites page. Users can visit their profile page and also see all current, past, and future reservations they have made. Users can always cancel a reservation on the profile page, but I implemented a 24-hour cancellation restriction which prohibits the cancellation within 24 hours of their reservation time. I created a contact option for users to reach out to me.
  
 
-### 📹 [Project Demo Video] (https://www.youtube.com/watch?v=hs9bWSQ_A2w) 
+### 📹 [Project Demo Video] [](https://www.youtube.com/watch?v=hs9bWSQ_A2w)
 
 ## <a name= "about-me"></a>About Me 🧕🏽
 
@@ -70,76 +70,25 @@ Carousel: <br>
 
 ![Hnet-image (1)](https://user-images.githubusercontent.com/114389244/208368302-fca5d53d-6bee-4094-8ca8-48e712966ef8.mp4)
 
-
 Hompe page: <br>
 
 ![hnet-image(2](https://user-images.githubusercontent.com/114389244/208369734-fe0b2b13-2f4e-4aa3-8c6b-73eb4d8f4a4b.mp4)<br>
  
- 
- 
-
-
 All Cars page page: <br>
 
 ![hnet-image(3](https://user-images.githubusercontent.com/114389244/208370639-def74380-739d-420a-a651-92bf14b9d0ea.mp4) <br>
 
-
-
-Utalizing the Sort by/filter Method <br>
+Utilizing the Sort by/filter Method <br>
 
 ![hnet-image(4](https://user-images.githubusercontent.com/114389244/208371612-295505aa-9c32-491d-ba12-c9a6d73d81e8.mp4) <br>
 
-
-
-Dropdown to select Categories <br> 
+Dropdown to select a Category <br> 
 
 ![hnet-image(5](https://user-images.githubusercontent.com/114389244/208372023-bebbe267-07cf-4a85-b944-da9bdf8eacc6.mp4)
 
-
 Register or Login <br>
 
-Favorite to save to favorites page <br>
-
-
-Selecting locations and Google Maps with geocoding <br>
-
-Selecting a car to book <br>
-
-Validating if dates has been already book or incorrect <br>
-
-Confirmation details page with payment options <br>
-
-Profile Page <br>
-
-Canceling reservation successfully <br>
-
-Unable to cancel reservation within 24 hours before the pick up time of the car <br>
-
-Return the car without a rate and a review <br>
-
-Return the car with a rate and a review  <br>
-
-Displaying rate and review with jinja2 templates <br>
-
-Contact Page <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![hnet-image(6](https://user-images.githubusercontent.com/114389244/208373308-c98dd59f-f357-4978-83ab-480ab7dc14ed.mp4)
 
 
 ## <a name= "installation"></a>Installation 🖊️
@@ -219,8 +168,6 @@ Step 11- Run the server:
 Step 12- To view locally, Type on local browser:
 
 localhost:5000
-
-
 
 ## <a name="future-iterations"></a>Future Iterations 💥
 - Create user authentication so users can retrieve forgotten passwords and create new passwords
