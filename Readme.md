@@ -103,7 +103,7 @@ Maryam Abdulle is a software Engineer and enjoys problem solving.
 ![hnet-image(10](https://user-images.githubusercontent.com/114389244/208472773-f5628ab4-f248-474c-8fe4-65d63cb83202.mp4) <br>
 
 
-### Canceling reservations both successfully & restrictions: <br>
+### Canceling reservations both successfully & with restrictions: <br>
 ![hnet-image(11](https://user-images.githubusercontent.com/114389244/208473132-83515826-8b63-437b-9c30-9b744bd1618e.mp4) <br>
 
 ### Return the car with a rate and a review:  <br>
