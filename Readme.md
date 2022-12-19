@@ -23,7 +23,7 @@ Skyline car Rental is a full-stack web application that allows users to browse a
 
 ### 📹 [Project Demo Video] (https://www.youtube.com/watch?v=hs9bWSQ_A2w) 
 
-## <a name= "about-me"></a>About Me 🧕🏾
+## <a name= "about-me"></a>About Me 🧕🏽
 
 Maryam Abdulle is a software Engineer and enjoys problem solving.
 
