@@ -1,5 +1,5 @@
 
-![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/maryamabdulle/Desktop/untitled%20folder/Title.png?version%3D1671138052818)
+![Alt text]
 
 
 ## Table of Contents 💻
@@ -13,32 +13,32 @@
 
 
  
-## <a name= "overview><a>Overview 🚗
+## <a name="overview></a>Overview 🚗
 
 Skyline car Rental is a full-stack web application that allows users to browse a variety of cars and their categories to learn about it. Users can utilize the filter method to sort by price, mileage, and the number of seats and select which car categories they want the filters to apply to from the four car categories such as ( SUVs, Small to full size, Luxury & Convertibles, or all All cars). Users are able to create an account or login to book a car online with the options of paying now or later. It lets users know when the selected car is not available. Users can select pick-up and drop-off locations and can view the full details of the locations. Users can also leave a review and rating for the car after it is returned and all users can see reviews of the cars. Users can choose to return without review. Users can favorite cars which will then show up on the user’s favorites page. Users can visit their profile page and also see all current, past, and future reservations they have made. Users can always cancel a reservation on the profile page, but I implemented a 24-hour cancellation restriction which prohibits the cancellation within 24 hours of their reservation time. I created a contact option for users to reach out to me.
  
 
-### :video_camera: [Project Demo Video] (https://www.youtube.com/watch?v=hs9bWSQ_A2w) 📹
+### 📹 [Project Demo Video] (https://www.youtube.com/watch?v=hs9bWSQ_A2w) 
 
-## <a name= "about-me><a>About Me ![Alt text](https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/lg/307/person-with-headscarf_medium-skin-tone_1f9d5-1f3fd_1f3fd.png)
+## <a name= "about-me></a>About Me 🧕🏾
 
 - Maryam Abdulle is a software Engineer and enjoys problem solving.
 
 
-## <a name= "tech-stack><a>Tech Stack 📚
+## <a name= "tech-stack></a>Tech Stack 📚
  
 **Backend**: Python(Flask), PostgreSQL, SQLAlchemy <br/>
 **Frontend**: AJAX, Bootstrap, CSS, HTML, Jinja2, Javascript(AJAX, JSON), jQuery <br/>
 **APIs**: Google Maps API <br/>
  
-## <a name="python-libraries-used"><a>Python libraries Used 💻
+## <a name="python-libraries-used"></a>Python libraries Used 💻
  
 - Flask Bootsrap-style <br/>
 - Datetime - Date and Time <br/>
 - Hashlib- Password security <br/>
  
  
-## <a name="roadmap"><a>Roadmap 📈
+## <a name="roadmap"></a>Roadmap 📈
  
 #### MVP :
 - users can create an account
@@ -67,7 +67,7 @@ Skyline car Rental is a full-stack web application that allows users to browse a
 - Add functionality that lets users book directly with other rental car companies through Skyline Car Rental
 
  
-## <a name= "features:><a>Features 🌼
+## <a name= "features:></a>Features 🌼
  
 Car Carsouel page: <br>
 
@@ -142,9 +142,9 @@ Contact Page <br>
 
 
 
-## <a name= "installation:><a>Installation
+## <a name= "installation:></a>Installation 🖊️
  
- ### Requirments 🖊️
+ ### Requirments 
  
  * Install requirements.txt
  * Python 3
@@ -174,7 +174,6 @@ Step 2- Create and activate a virtual environment:
 
  ```
  $ pip install Flask-Mail
-
  ````
 
  Step 5- create a secrets.sh file to save secret keys:
@@ -182,7 +181,7 @@ Step 2- Create and activate a virtual environment:
  export "API" = "youcanputhereyourGooglemapsapi" 
  ```
 
-Step- 6 - Create and use app passwords to access Google Account
+Step- 6 - Create and use app passwords to access Google Account:
 
  - Create sender and receiver emails to add to secret.sh.sh file 
  - For the sender email, turn on 2-step Verification on your account to create and use app passwords
@@ -193,6 +192,7 @@ step-7 Add both receiver and sender emails and 16-character code into secrets.sh
 ```
 export= "EMAIL"= "emailaddress";export "PASS"= "16-charactercode"
 export= "RECIEVER"="emailaddress"
+```
 
  Step 8- Activate the secrets.sh file in terminal:
  ```
@@ -217,7 +217,8 @@ Step 11- Run the server:
 ```
 
 Step 12- To view locally, Type on local browser:
-```localhost:5000 
+```
+localhost:5000 
 ```
 
 
