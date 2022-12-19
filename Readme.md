@@ -2,7 +2,7 @@
 ![Alt text]
 
 
-## Table of Contents 💻
+## Table of Contents 📖 
 
 * [Overview](#overview)
 * [Project Demo Video](#project-demo-video)
