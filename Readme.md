@@ -214,6 +214,7 @@ Step 11- Run the server:
 ```
 
 Step 12- To view locally, Type on local browser:
+
 localhost:5000
 
 
