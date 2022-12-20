@@ -27,14 +27,13 @@ class FlaskTestBasic(TestCase):
     def test_homepage(self):
         """Test homepage route."""
 
-        r = self.client.get ("/")
-        self.assertIn(b"Rent a Car Online Today", r.data)
-
+        response = self.client.get ("/")
+        self.assertIn(b"Rent a Car Online Today", response.data)
 
     def test_car_title(self):
         """Test all_vehcile page. Make sure name of the car is showing."""
 
-        r = requests.get('http://localhost:5000/cars')
+        r = requests.get("http://localhost:5000/cars")
         self.assertIn(b"Ford Fiesta", r.content)
         self.assertIn(b"Mazda CX-5",r.content )
 
@@ -133,6 +132,15 @@ class FlaskTestBasic(TestCase):
         pass
 
 
+    def test_add_favourite(self):
+        fav_in = Favorite(car_id=1, user_id=1)
+        db.session.add(fav_in)
+        db.session.commit()
+
+        self.assertEqual(fav_in.favorites_id, 1)
+        pass
+
+
     def test_fav_car(self):
         fav_in = Favorite(car_id=1, user_id=1)
         db.session.add(fav_in)
@@ -170,10 +178,7 @@ class FlaskTestBasic(TestCase):
         """Drop data at tend of every test."""
 
         db.session.remove()
-
-
-
-
+        
 def test_user_resgistration(self):
     """Test user resgistration."""
     password = 'testing'
