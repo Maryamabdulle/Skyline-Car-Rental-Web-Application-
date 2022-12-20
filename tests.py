@@ -80,8 +80,7 @@ class FlaskTestBasic(TestCase):
     def test_duplicate_email_user(self):
         data=''
         try:
-            # can be run  two times
-            # To get duplicate email
+            # can be run  two times to get duplicate email
             for _ in range(2):
                 password = 'testing'
                 hash_password = hashlib.sha256(password.encode()).hexdigest()
