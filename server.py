@@ -349,7 +349,7 @@ def cars_search():
     mpg_cars = []
     seats_cars = []
     searched_cars = []
-
+    
     cars= crud.get_cars()
 
     if not price or len(price) <= 0 or not mpg or len(mpg) < 0 or not seats and len(seats) < 0:
@@ -935,4 +935,4 @@ def handle_email():
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
-    app.run()
+    app.run(host="0.0.0.0", debug=True)
