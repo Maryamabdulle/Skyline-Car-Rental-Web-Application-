@@ -27,6 +27,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = 'dev'
 app.jinja_env.undefined = StrictUndefined
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 apikey= os.environ['API']
 app.config.update(
