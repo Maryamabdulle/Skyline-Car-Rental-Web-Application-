@@ -15,7 +15,7 @@ from jinja2 import StrictUndefined
 import os
 import requests
 import hashlib
-
+from dotenv import load_dotenv
 from helper import convert_date, get_mpg, compare_dates, convert_datetime, check_card_expfrmt
 from datetime import datetime, timedelta
 import random
@@ -23,6 +23,7 @@ from flask_mail import Mail, Message
 
 
 
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = 'dev'
 app.jinja_env.undefined = StrictUndefined
